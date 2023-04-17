@@ -6,9 +6,11 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 20:36:55 by gamaral           #+#    #+#             */
-/*   Updated: 2023/04/16 21:06:02 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/04/17 22:29:51 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {

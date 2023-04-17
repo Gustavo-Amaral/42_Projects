@@ -6,11 +6,11 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 19:55:07 by gamaral           #+#    #+#             */
-/*   Updated: 2023/02/21 19:56:42 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/04/17 22:29:51 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
 void	ft_putstr(char *str)
 {

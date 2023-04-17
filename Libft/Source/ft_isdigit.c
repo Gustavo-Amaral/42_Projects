@@ -6,9 +6,11 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 19:42:22 by gamaral           #+#    #+#             */
-/*   Updated: 2023/04/16 20:05:40 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/04/17 22:29:51 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_isdigit(int c)
 {

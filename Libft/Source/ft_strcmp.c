@@ -6,9 +6,11 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 19:58:31 by gamaral           #+#    #+#             */
-/*   Updated: 2023/02/21 22:41:33 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/04/17 22:29:51 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int		ft_strcmp(char *s1, char *s2)
 {

@@ -6,9 +6,11 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 22:57:36 by gamaral           #+#    #+#             */
-/*   Updated: 2023/04/17 20:44:05 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/04/17 22:28:09 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_atoi(const char *nptr)
 {

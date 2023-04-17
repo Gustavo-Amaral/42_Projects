@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/16 21:39:25 by gamaral           #+#    #+#             */
+/*   Created: 2023/04/17 20:45:53 by gamaral           #+#    #+#             */
 /*   Updated: 2023/04/17 22:29:51 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst,const char *src, size_t size)
+void *ft_calloc(size_t nmemb, size_t size)
 {
-	size_t	total;
-	size_t	dest_len;
-	size_t	src_len;
+	void	*ptr;
 	size_t	i;
 
-	dest_len = ft_strlen(dst);
-	src_len = ft_strlen(src);
+	if (!nmemb || !size)
+		return (NULL);
+	ptr = (void*)malloc(nmemb * size);
+	if (!ptr)
+		return (NULL);
 	i = 0;
-	total = ft_strlen(dst);
-	if (size < 1);
-		return (src_len + size);
-	while (dest_len < (size - 1) && src[i] != '\0')
+	while (i < (nmemb * size))
 	{
-		dst[dest_len] = src[i];
-		dest_len++;
+		ptr[i] = 0;
 		i++;
 	}
-	dst[dest_len] = '\0';
-	if (size < ft_strlen(dst))
-		return (src_len + size);
-	else
-		return (total + src_len);
+	return (ptr);
 }
