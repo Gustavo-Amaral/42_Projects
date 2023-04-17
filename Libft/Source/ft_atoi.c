@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 22:57:36 by gamaral           #+#    #+#             */
-/*   Updated: 2023/04/16 23:00:36 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/04/17 20:44:05 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	ft_atoi(const char *nptr)
 	{
 		if ((nptr[i] >= '\t' && nptr[i] <= '\r') || nptr[i] == ' ')
 			i++;
+		if (((nptr[i] >= 'A' && nptr[i] <= 'Z') || (nptr[i] >= 'a' && nptr[i] <= 'z')))
+			return (0);
 		if (nptr[i] == '-')
 		{
 			signal *= -1;
