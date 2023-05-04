@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   _bonus.c                                           :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/21 21:26:21 by gamaral           #+#    #+#             */
-/*   Updated: 2023/05/04 22:28:00 by gamaral          ###   ########.fr       */
+/*   Created: 2023/05/04 22:46:21 by gamaral           #+#    #+#             */
+/*   Updated: 2023/05/04 22:57:01 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "_bonus.h"
-
-t_list *ft_lstnew(void *content)
+void ft_lstadd_front(t_list **lst, t_list *new)
 {
-
+	if (lst)
+	{
+		if (*lst)
+		{
+			new->next = *lst;
+			*lst = new;
+		}
+	}
 }
