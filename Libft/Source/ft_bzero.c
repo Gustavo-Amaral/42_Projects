@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 20:27:12 by gamaral           #+#    #+#             */
-/*   Updated: 2023/04/17 22:29:51 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/05/07 20:17:37 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,9 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	int	i;
+	unsigned char	*str;
 
-	i = 0;
-	while (i < int(n))
-	{
-		*s = 0;
-		s++;
-		i++;
-	}
+	str = (unsigned char *)s;
+	while (n-- > 0)
+		*str++ = '\0';
 }

@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 20:21:56 by gamaral           #+#    #+#             */
-/*   Updated: 2023/04/17 22:29:51 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/05/07 13:37:25 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,13 @@
 
 void	*ft_memset(void *s, int c, size_t n)
 {
-	void *aux;
-	int	i;
+	unsigned char	*aux;
 
-	i = 0;
-	aux = s;
-	while (i < int(n))
+	aux = (unsigned char *)s;
+	while (n-- > 0)
 	{
-		*s = c;
-		s++;
-		i++;
+		*aux = (unsigned char)c;
+		aux++;
 	}
-	return (aux);
+	return (s);
 }

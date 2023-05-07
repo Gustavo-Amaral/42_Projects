@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 22:15:30 by gamaral           #+#    #+#             */
-/*   Updated: 2023/04/17 22:29:51 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/05/06 19:58:08 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ char	*ft_strrchr(const char *s, int c)
 		i++;
 	}
 	if (flag)
-		return (s + aux);
+		return ((char *)s + aux);
 	if (c == 0)
-		return (s + i)
+		return ((char *)s + i);
 	return (NULL);
 }

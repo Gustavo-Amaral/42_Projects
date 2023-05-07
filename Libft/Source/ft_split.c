@@ -6,92 +6,70 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 21:47:28 by gamaral           #+#    #+#             */
-/*   Updated: 2023/05/04 21:33:31 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/05/06 22:33:20 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	**ft_alloc_split(char const *s, char c)
+static int	count_words(const char *str, char c)
 {
-	size_t	i;
-	char	**split;
-	size_t	total;
+	int	i;
+	int	trigger;
 
 	i = 0;
-	total = 0;
-	while (s[i])
+	trigger = 0;
+	while (*str)
 	{
-		if (s[i] == c)
-			total++;
-		i++;
-	}
-	split = (char**)malloc(sizeof(s) * (total + 2));
-	if (!split)
-		return (NULL);
-	return (split);
-}
-
-void	*ft_free_all_split_alloc(char **split, size_t elts)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < elts)
-	{
-		free(split[i]);
-		i++;
-	}
-	free(split);
-	return (NULL);
-}
-
-static void	*ft_split_range(char **split, char const *s,
-		t_split_next *st, t_split_next *lt)
-{
-	split[lt->length] = ft_substr(s, st->start, st->length);
-	if (!split[lt->length])
-		return (ft_free_all_split_alloc(split, lt->length));
-	lt->length++;
-	return (split);
-}
-
-static void	*ft_split_by_char(char **split, char const *s, char c)
-{
-	size_t			i;
-	t_split_next	st;
-	t_split_next	lt;
-
-	i = 0;
-	lt.length = 0;
-	lt.start = 0;
-	while (s[i])
-	{
-		if (s[i] == c)
+		if (*str != c && trigger == 0)
 		{
-			st.start = lt.start;
-			st.length = (i - lt.start);
-			if (i > lt.start && !ft_split_range(split, s, &st, &lt))
-				return (NULL);
-			lt.start = i + 1;
+			trigger = 1;
+			i++;
 		}
-		i++;
+		else if (*str == c)
+			trigger = 0;
+		str++;
 	}
-	st.start = lt.start;
-	st.length = (i - lt.start);
-	if (i > lt.start && i > 0 && !ft_split_range(split, s, &st, &lt))
-		return (NULL);
-	split[lt.length] = 0;
-	return (split);
+	return (i);
+}
+
+static char	*word_dup(const char *str, int start, int finish)
+{
+	char	*word;
+	int		i;
+
+	i = 0;
+	word = malloc((finish - start + 1) * sizeof(char));
+	while (start < finish)
+		word[i++] = str[start++];
+	word[i] = '\0';
+	return (word);
 }
 
 char	**ft_split(char const *s, char c)
 {
+	size_t	i;
+	size_t	j;
+	int		index;
 	char	**split;
 
-	if (!(split = ft_alloc_split(s, c)))
-		return (NULL);
-	if (!ft_split_by_char(split, s, c))
-		return (NULL);
+	split = malloc((count_words(s, c) + 1) * sizeof(char *));
+	if (!s || !(split))
+		return (0);
+	i = 0;
+	j = 0;
+	index = -1;
+	while (i <= ft_strlen(s))
+	{
+		if (s[i] != c && index < 0)
+			index = i;
+		else if ((s[i] == c || i == ft_strlen(s)) && index >= 0)
+		{
+			split[j++] = word_dup(s, index, i);
+			index = -1;
+		}
+		i++;
+	}
+	split[j] = 0;
 	return (split);
 }

@@ -6,42 +6,43 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 22:57:36 by gamaral           #+#    #+#             */
-/*   Updated: 2023/04/17 22:28:09 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/05/06 22:25:09 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+static int	check_sign(const char *str, int i, int *is_neg)
 {
-	int	i;
-	int	signal;
-	int	flag;
-	int	result;
-
-	signal = 1;
-	i = 0;
-	flag = 0;
-	result = 0;
-	while (nptr[i] != '\0' && flag == 0)
+	if (str[i] == '-' || str[i] == '+')
 	{
-		if ((nptr[i] >= '\t' && nptr[i] <= '\r') || nptr[i] == ' ')
-			i++;
-		if (((nptr[i] >= 'A' && nptr[i] <= 'Z') || (nptr[i] >= 'a' && nptr[i] <= 'z')))
-			return (0);
-		if (nptr[i] == '-')
-		{
-			signal *= -1;
-			i++;
-		}
-		while (nptr[i] >= '0' && nptr[i] <= '9')
-		{
-			result = result * 10 + nptr[i] - '0';
-			i++;
-			flag = 1;
-		}
+		if (str[i] == '-')
+			*is_neg = -1;
 		i++;
 	}
-	result *= signal;
-	return (result);
+	return (i);
+}
+
+int	ft_atoi(const char *str)
+{
+	int			i;
+	int			is_neg;
+	long long	res;
+
+	i = 0;
+	is_neg = 1;
+	res = 0;
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || \
+			str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
+		i++;
+	i = check_sign(str, i, &is_neg);
+	while (str[i])
+	{
+		if (str[i] < 48 || str[i] > 57)
+			break ;
+		else
+			res = (res * 10) + str[i] - 48;
+		i++;
+	}
+	return (res * is_neg);
 }

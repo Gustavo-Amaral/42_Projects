@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 20:36:55 by gamaral           #+#    #+#             */
-/*   Updated: 2023/04/17 22:29:51 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/05/07 20:51:50 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,25 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	void	*aux;
-	int		i;
+	char	*s;
+	char	*d;
+	size_t	i;
 
-	if(!dest || !src)
-		return (NULL);
+	s = (char *)src;
+	d = (char *)dest;
 	i = 0;
-	while (i < int(n))
+	if (!d && !s)
+		return (dest);
+	if (d > s)
+		while (n-- > 0)
+			d[n] = s[n];
+	else
 	{
-		aux[i] = src[i];
-		dest[i] = aux[i];
-		i++;
+		while (i < n)
+		{
+			d[i] = s[i];
+			i++;
+		}
 	}
 	return (dest);
 }

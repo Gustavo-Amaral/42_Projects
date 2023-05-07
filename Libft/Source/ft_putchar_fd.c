@@ -6,13 +6,13 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 22:32:05 by gamaral           #+#    #+#             */
-/*   Updated: 2023/04/27 22:33:27 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/05/06 20:03:31 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_putchar_fd(char c, int fd)
+void	ft_putchar_fd(char c, int fd)
 {
 	write(fd, &c, 1);
 }

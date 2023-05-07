@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 22:37:13 by gamaral           #+#    #+#             */
-/*   Updated: 2023/04/27 22:39:33 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/05/06 22:39:36 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_putnbr_fd(int n, int fd)
 {
 	char	*c;
 
-	if (nb == -2147483648)
+	if (n == -2147483648)
 	{
 		ft_putchar_fd('-', fd);
 		c = "2147483648";
@@ -24,19 +24,19 @@ void	ft_putnbr_fd(int n, int fd)
 	}
 	else
 	{
-		if (nb < 0)
+		if (n < 0)
 		{
-			nb = -nb;
+			n = -n;
 			ft_putchar_fd('-', fd);
 		}
-		if (nb < 10 && nb >= 0)
+		if (n < 10 && n >= 0)
 		{
-			ft_putchar_fd((nb + 48), fd);
+			ft_putchar_fd((n + 48), fd);
 		}
 		else
 		{
-			ft_putnbr_fd((nb / 10), fd);
-			ft_putchar_fd(((nb % 10) + 48), fd);
+			ft_putnbr_fd((n / 10), fd);
+			ft_putchar_fd(((n % 10) + 48), fd);
 		}
 	}
 }

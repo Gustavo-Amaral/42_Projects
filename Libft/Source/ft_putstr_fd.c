@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 22:33:57 by gamaral           #+#    #+#             */
-/*   Updated: 2023/04/27 22:34:28 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/05/06 22:37:56 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	while (*str != '\0' )
+	while (*s != '\0' )
 	{
-		write(fd, str, 1);
-		str++;
+		write(fd, s, 1);
+		s++;
 	}
 }
