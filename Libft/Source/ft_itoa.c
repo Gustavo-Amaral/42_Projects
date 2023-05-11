@@ -6,57 +6,62 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 22:22:54 by gamaral           #+#    #+#             */
-/*   Updated: 2023/05/07 21:17:37 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/05/11 22:51:21 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_abs(int nbr)
+static int	ft_get_size(int n)
 {
-	if (nbr < 0)
-		return (-nbr);
-	else
-		return (nbr);
+	int	size;
+
+	size = 0;
+	if (n <= 0)
+		size++;
+	while (n != 0)
+	{
+		n = n / 10;
+		size++;
+	}
+	return (size);
 }
 
-static void	ft_strrev(char *str)
+static void	ft_fill_res(int size, int offset, int n, char *res)
 {
-	size_t	length;
-	size_t	i;
-	char	tmp;
-
-	length = ft_strlen(str);
-	i = 0;
-	while (i < length / 2)
+	while (size > offset)
 	{
-		tmp = str[i];
-		str[i] = str[length - i - 1];
-		str[length - i - 1] = tmp;
-		i++;
+		res[size - 1] = n % 10 + '0';
+		n = n / 10;
+		size--;
 	}
 }
 
 char	*ft_itoa(int n)
 {
-	char	*str;
-	int		is_neg;
-	size_t	length;
+	int		offset;
+	int		size;
+	char	*res;
 
-	is_neg = (n < 0);
-	str = ft_calloc(11 + is_neg, sizeof(*str));
-	if (!str)
-		return (NULL);
-	if (n == 0)
-		str[0] = '0';
-	length = 0;
-	while (n != 0)
+	offset = 0;
+	size = ft_get_size(n);
+	res = (char *)malloc(sizeof(char) * size + 1);
+	if (!res)
+		return (0);
+	if (n == -2147483648)
 	{
-		str[length++] = '0' + ft_abs(n % 10);
-		n = (n / 10);
+		res[0] = '-';
+		res[1] = '2';
+		n = 147483648;
+		offset = 2;
 	}
-	if (is_neg)
-		str[length] = '-';
-	ft_strrev(str);
-	return (str);
+	if (n < 0)
+	{
+		res[0] = '-';
+		offset = 1;
+		n = -n;
+	}
+	ft_fill_res(size, offset, n, res);
+	res[size] = '\0';
+	return (res);
 }
