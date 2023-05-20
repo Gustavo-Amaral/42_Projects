@@ -6,12 +6,12 @@
 #    By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/12 19:21:12 by gamaral           #+#    #+#              #
-#    Updated: 2023/05/20 18:35:07 by gamaral          ###   ########.fr        #
+#    Updated: 2023/05/20 20:29:53 by gamaral          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := libftprintf.a
-CC := gcc
+CC := cc
 CFLAGS := -Wall -Werror -Wextra
 RM = rm -f
 INCLUDE = -I .
