@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 22:17:45 by gamaral           #+#    #+#             */
-/*   Updated: 2023/05/20 19:07:54 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/05/20 22:53:22 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdarg.h>
 
 int		ft_atoi(const char *nptr);
 void	ft_bzero(void *s, size_t n);
@@ -76,5 +77,14 @@ void	ft_revstr(char *str);
 int		ft_strcmp(char *s1, char *s2);
 void	ft_swap(int *a, int *b);
 void	decimal_to_hexadecimal(int decimal_number, char *hexadecimal_string);
+
+/************** FT_PRINTF FUNCTIONS **************/
+int		ft_print_char(char c);
+int		ft_print_hex(unsigned int num, const char c);
+int		ft_print_nbr(int num);
+int		ft_print_ptr(void *ptr);
+int		ft_print_str(char *c);
+int		ft_print_unsigned(unsigned int num);
+int		ft_printf(const char	*format, ...);
 
 #endif
