@@ -6,11 +6,11 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 19:15:45 by gamaral           #+#    #+#             */
-/*   Updated: 2023/05/20 17:25:42 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/05/20 23:00:20 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 static int	ft_abs(int num)
 {

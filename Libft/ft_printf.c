@@ -6,11 +6,11 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 20:55:11 by gamaral           #+#    #+#             */
-/*   Updated: 2023/05/20 17:12:36 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/05/20 23:00:20 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 static int	check_conversion(va_list args, const char format)
 {

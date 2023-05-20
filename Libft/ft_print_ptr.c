@@ -6,11 +6,11 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 19:15:50 by gamaral           #+#    #+#             */
-/*   Updated: 2023/05/20 22:55:47 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/05/20 23:00:20 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 static int	ft_ptr_len(unsigned long long num)
 {
