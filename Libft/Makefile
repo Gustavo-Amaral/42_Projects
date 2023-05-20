@@ -6,7 +6,7 @@
 #    By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/05 21:28:12 by gamaral           #+#    #+#              #
-#    Updated: 2023/05/20 18:26:38 by gamaral          ###   ########.fr        #
+#    Updated: 2023/05/20 20:30:18 by gamaral          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ SRC = ${PART1} ${PART2} ${EXTRA}
 OBJS = ${SRC:.c=.o}
 BONUS_OBJS = ${BONUS:.c=.o}
 
-CC = gcc
+CC = cc
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
 INCLUDE = -I .
