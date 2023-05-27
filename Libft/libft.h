@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 22:17:45 by gamaral           #+#    #+#             */
-/*   Updated: 2023/05/20 22:53:22 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/05/20 17:53:47 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdarg.h>
 
 int		ft_atoi(const char *nptr);
 void	ft_bzero(void *s, size_t n);
@@ -32,11 +31,15 @@ void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t n);
 void	*ft_memset(void *s, int c, size_t n);
 void	ft_putchar_fd(char c, int fd);
+void	ft_putchar(char c);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+void	ft_putnbr(int nb);
 void	ft_putstr_fd(char *s, int fd);
+void	ft_putstr(char *str);
 char	**ft_split(char const *s, char c);
 char	*ft_strchr(const char *s, int c);
+int		ft_strcmp(char *s1, char *s2);
 char	*ft_strdup(const char *s);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	*ft_strjoin(char const *s1, char const *s2);
@@ -49,8 +52,11 @@ char	*ft_strnstr(const char *big, const char *little, size_t len);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+void	ft_swap(int *a, int *b);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 typedef struct s_list
 {
@@ -70,21 +76,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 /************** EXTRA FUNCTIONS **************/
 
-void	ft_putchar(char c);
-void	ft_putnbr(int nb);
-void	ft_putstr(char *str);
-void	ft_revstr(char *str);
-int		ft_strcmp(char *s1, char *s2);
-void	ft_swap(int *a, int *b);
 void	decimal_to_hexadecimal(int decimal_number, char *hexadecimal_string);
-
-/************** FT_PRINTF FUNCTIONS **************/
-int		ft_print_char(char c);
-int		ft_print_hex(unsigned int num, const char c);
-int		ft_print_nbr(int num);
-int		ft_print_ptr(void *ptr);
-int		ft_print_str(char *c);
-int		ft_print_unsigned(unsigned int num);
-int		ft_printf(const char	*format, ...);
+void	ft_revstr(char *str);
 
 #endif
