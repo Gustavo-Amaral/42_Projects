@@ -6,11 +6,20 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 22:53:17 by gamaral           #+#    #+#             */
-/*   Updated: 2023/05/27 23:01:08 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/05/28 18:05:38 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
+
+static char	*ft_free(char *buffer, char *buf)
+{
+	char	*temp;
+
+	temp = ft_strjoin(buffer, buf);
+	free(buffer);
+	return (temp);
+}
 
 static char	*read_file(int fd, char *buffer)
 {
@@ -19,18 +28,19 @@ static char	*read_file(int fd, char *buffer)
 
 	bytes_read = 1;
 	temp = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
-	if(!temp)
-		return(NULL);
+	if (!temp)
+		return (NULL);
 	while (!ft_strchr(temp, '\n') && bytes_read > 0)
 	{
 		bytes_read = read(fd, temp, BUFFER_SIZE);
 		if (bytes_read == -1)
 		{
+			free(buffer);
 			free(temp);
 			return (NULL);
 		}
 		temp[bytes_read] = '\0';
-		buffer = ft_strjoin(buffer, temp);
+		buffer = ft_free(buffer, temp);
 	}
 	free(temp);
 	return (buffer);
@@ -41,9 +51,9 @@ static char	*get_line(char *buffer)
 	size_t	i;
 	char	*line;
 
-	if (!buffer)
-		return (NULL);
 	i = 0;
+	if (!buffer[i])
+		return (NULL);
 	while (buffer[i] != '\0' && buffer[i] != '\n')
 		i++;
 	line = ft_calloc(sizeof(char), i + 2);
@@ -78,7 +88,7 @@ static char	*only_next_line(char *buffer)
 		free(buffer);
 		return (NULL);
 	}
-	temp = ft_calloc(ft_strlen(buffer) - i, sizeof(char));
+	temp = ft_calloc(ft_strlen(buffer) - i + 1, sizeof(char));
 	if (!temp)
 		return (NULL);
 	i++;

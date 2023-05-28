@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 21:20:16 by gamaral           #+#    #+#             */
-/*   Updated: 2023/05/27 22:19:56 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/05/28 15:05:37 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 8
-#endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
 
 /****** GET NEXT LINE FUNCTIONS ******/
 char	*get_next_line(int fd);

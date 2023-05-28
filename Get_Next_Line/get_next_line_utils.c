@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 21:23:14 by gamaral           #+#    #+#             */
-/*   Updated: 2023/05/27 21:37:39 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/05/28 14:57:20 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ size_t	ft_strlen(const char *s)
 	size_t	i;
 
 	if (s == NULL)
-		return(0);
+		return (0);
 	i = 0;
 	while (s[i] != '\0')
 	{

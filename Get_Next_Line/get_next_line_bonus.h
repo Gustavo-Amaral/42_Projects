@@ -6,23 +6,23 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 22:56:40 by gamaral           #+#    #+#             */
-/*   Updated: 2023/05/27 22:57:35 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/05/28 15:05:31 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <unistd.h>
 # include <stdlib.h>
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 8
-#endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
 
-#ifndef MAX_FILE
-# define MAX_FILE 10
-#endif
+# ifndef MAX_FILE
+#  define MAX_FILE 10
+# endif
 
 /****** GET NEXT LINE FUNCTIONS ******/
 char	*get_next_line(int fd);
