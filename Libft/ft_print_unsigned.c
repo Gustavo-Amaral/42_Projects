@@ -6,13 +6,13 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 19:16:01 by gamaral           #+#    #+#             */
-/*   Updated: 2023/05/20 23:00:20 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/06/15 21:08:08 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_put_unsigned_nbr(unsigned int num)
+void	ft_put_unsigned_nbr(unsigned int num)
 {
 	if (num < 10)
 	{

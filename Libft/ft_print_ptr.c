@@ -6,13 +6,13 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 19:15:50 by gamaral           #+#    #+#             */
-/*   Updated: 2023/05/20 23:00:20 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/06/15 21:08:08 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_ptr_len(unsigned long long num)
+int	ft_ptr_len(unsigned long long num)
 {
 	int	len;
 
@@ -25,7 +25,7 @@ static int	ft_ptr_len(unsigned long long num)
 	return (len);
 }
 
-static void	ft_put_ptr(unsigned long long num)
+void	ft_put_ptr(unsigned long long num)
 {
 	if (num >= 16)
 	{
