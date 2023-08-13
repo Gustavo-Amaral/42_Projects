@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 14:27:13 by gamaral           #+#    #+#             */
-/*   Updated: 2023/08/13 23:13:27 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/08/13 23:40:06 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,13 @@ typedef struct s_vector2D
 	int y;
 } t_vector2D;
 
+typedef struct s_char
+{
+	t_data			*sprite;
+	int				direction;
+	t_vector2D 		position;
+}
+
 typedef struct s_vars
 {
     void    		*mlx;
@@ -43,8 +50,14 @@ typedef struct s_vars
     t_list  		*lst;
     t_list  		*img_lst;
 	char			**map;
+	int				update;
+	int				items;
 	int				total_items;
 	t_vector2D		size;
+	t_vector2D		last_position:
+	t_char			player;
+	t_data			*jump;
+	t_data			*sprites;
 } t_vars;
 
 #endif

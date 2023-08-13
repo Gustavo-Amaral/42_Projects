@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 21:58:03 by gamaral           #+#    #+#             */
-/*   Updated: 2023/08/13 23:21:40 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/08/13 23:37:36 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ static int	global_init_4(t_vars *vars)
 	vars->window = mlx_new_window(vars->mlx, (vars->size.y * 64), \
 				(vars->size.x * 32) + 43, "so_long Gustavo Amaral");
 	vars->jump = generate_jump(vars);   // funcao ainda nao feita
-	vars->last_pos = search_char(vars->map, 'P');   // funcao ainda nao feita
-	vars->player.pos = vars->last_pos;
+	vars->last_position = search_char(vars->map, 'P');   // funcao ainda nao feita
+	vars->player.position = vars->last_position;
 	vars->sprites = generate_sprites(vars);   // funcao ainda nao feita
 	vars->player.sprite = generate_player(vars);   // funcao ainda nao feita
 	if (!vars->jump || !vars->window || !vars->sprites || !vars->player.sprite)
