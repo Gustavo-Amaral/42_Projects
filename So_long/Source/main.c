@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 14:21:34 by gamaral           #+#    #+#             */
-/*   Updated: 2023/08/13 23:14:05 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/09/02 22:55:29 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ void    print_error(int error)
     	ft_putstr_fd("Error\nMap's name is a directory!\n");
 	if (error == MAP_IS_TOO_BIG)
 		ft_putstr_fd("Error\nMap is WAYYYY TOOOOO BIIIIIIG!\n");
+	if (error == INVALID_CHARS_IN_MAP)
+		ft_putstr_fd("Error\nMap contains invalid characters!\n");
+	if (error == INVALID_WALLS_IN_MAP)
+		ft_putstr_fd("Error\nMap contains invalid wall scheme!\n");
 }
 int is_map_name_correct(char *name, t_list **lst, int *error)
 {
@@ -58,7 +62,7 @@ int is_map_name_correct(char *name, t_list **lst, int *error)
 
 bool check_initialization_error(int argc, char**argv, t_vars *var)
 {
-    int error;what is /dev/urandom in linux
+    int error;
 
 	error = 0;
 	if (argc != 2)
@@ -89,6 +93,10 @@ int    main (int argc, char **argv)
 
     var.lst = NULL;
     var.img_lst = NULL;
+	if(!check_initialization_error(argc, argv, &var))
+	{
+		return ()
+	}
     var.mlx = mlx_init();
     var.window = mlx_new_window(var.mlx, 500, 500, "So_long - Gustavo Amaral");
     mlx_loop(var.mlx);

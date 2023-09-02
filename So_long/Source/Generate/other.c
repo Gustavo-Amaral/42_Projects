@@ -6,11 +6,11 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 21:58:03 by gamaral           #+#    #+#             */
-/*   Updated: 2023/08/13 23:37:36 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/09/02 22:48:45 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/so_long.h"
+#include "../../Includes/so_long.h"
 
 void	init_vars(t_vars *vars)
 {
@@ -45,7 +45,7 @@ static int	global_init_3(t_vars *vars)
 	i = 0;
 	while (vars->map[i])
 	{
-		vars->save[i] = ft_strdup(vars->map[i], vars->alloc);
+		vars->save[i] = ft_strdup(vars->map[i], vars->lst);
 		if(!vars->save)
 			return(MEMORY_ALLOCATION_FAILURE);
 		i++;
@@ -56,24 +56,26 @@ static int	global_init_3(t_vars *vars)
 	return (global_init_4(vars));
 }
 
-static int	global_init_2(t_vars *vars, int fildes, char **argv)
+static int	global_init_2(t_vars *vars, int fildes_or_error, char **argv)
 {
-	fildes = open(argv[1], O_RDONLY | O_NOFOLLOW | O_NOCTTY);
-	vars->map = read_map(&fildes, &vars->size, &vars->total_items, vars); // funcao ainda nao feita
+	fildes_or_error = open(argv[1], O_RDONLY | O_NOFOLLOW | O_NOCTTY);
+	vars->map = read_map(&fildes_or_error, &vars->size, &vars->total_items, vars); // funcao ainda nao feita
+	close(fildes_or_error);
 	if (!vars->map)
 	{
-		if (fildes != -1 && fildes < 0)
-			return (MEMORY_ALLOCATION_FAILURE);
+		if (fildes_or_error != -1 && fildes_or_error < 0)
+			return (fildes_or_error);
 		else
 			return (MAP_NAME_INCORRECT);
 	}
-	vars->map = resize_map(vars->map, &vars->size, &vars->alloc); // funcao ainda nao feita
+	vars->map = resize_map(vars->map, &vars->size, &vars->lst); // funcao ainda nao feita
 	if (!vars->map)
 	{
 		end_and_free(vars); // funcao ainda nao feita
 		return (MEMORY_ALLOCATION_FAILURE);
 	}
-	vars->save = ft_malloc(sizeof(char *) * (vars->size.y + 1), &vars->alloc); // funcao ainda nao feita
+	vars->save = malloc(sizeof(char *) * (vars->size.y + 1));
+	ft_lstadd_back(ft_lstnew(save));
 	if(!vars->save)
 		return (MEMORY_ALLOCATION_FAILURE);
 	return (global_init_3(vars));
@@ -81,7 +83,7 @@ static int	global_init_2(t_vars *vars, int fildes, char **argv)
 
 int	global_init(t_vars *vars, char **argv)
 {
-	int	fildes;
+	int	fildes_or_error;
 
 	init_vars(vars);
 	vars->mlx = mlx_init();
@@ -90,11 +92,11 @@ int	global_init(t_vars *vars, char **argv)
 	vars->random = open("/dev/urandom", O_RDONLY);
 		if (vars->random == -1)
 			return (MEMORY_ALLOCATION_FAILURE);
-	fildes = open(argv[1], O_DIRECTORY);
-	if (fildes >= 0)
+	fildes_or_error = open(argv[1], O_DIRECTORY);
+	if (fildes_or_error >= 0)
 	{
 		close(fd);
 		return (MAP_IS_A_DIRECTORY);
 	}
-	return(global_init_2(vars, fildes, argv));
+	return(global_init_2(vars, fildes_or_error, argv));
 }
