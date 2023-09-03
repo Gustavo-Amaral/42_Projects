@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2.c                                           :+:      :+:    :+:   */
+/*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/02 20:57:37 by gamaral           #+#    #+#             */
-/*   Updated: 2023/09/03 17:57:32 by gamaral          ###   ########.fr       */
+/*   Created: 2023/09/03 21:18:59 by gamaral           #+#    #+#             */
+/*   Updated: 2023/09/03 21:23:03 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/so_long.h"
+#include "../../Includes/so_long.h"
 
-int	random_nb(t_vars *vars)
+t_data	generate_image(t_vars vars, char *img_path, t_list **lst)
 {
-	vars->bit = ((vars->seed) ^ (vars->seed >> 2) 
-			^ (vars->seed >> 3) ^ (vars->seed >> 5)) & 1;
-	vars->seed = (vars->seed >> 1) | (vars->bit << 15);
-	return (vars->seed);
+	t_data	sprite;
+
+	sprite.img = mlx_xpm_file_to_image(vars.mlx, img_path, 
+			&sprite.width, &sprite.height);
+	if (!sprite.img)
+		return (sprite);
+	sprite.addr = mlx_get_data_addr(sprite.img, &sprite.bits_per_pixel,
+			&sprite.line_length, &sprite.endian);
+	ft_lstadd_back(lst, ft_lstnew(sprite.img));
 }

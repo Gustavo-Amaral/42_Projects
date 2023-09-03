@@ -6,14 +6,14 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 14:27:13 by gamaral           #+#    #+#             */
-/*   Updated: 2023/09/02 22:54:47 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/09/03 21:13:06 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-#include "../Libft/libft.h"
+# include "../Libft/libft.h"
 
 # define FALSE          false
 # define TRUE           true
@@ -31,36 +31,53 @@
 # define INVALID_CHARS_IN_MAP			-10
 # define INVALID_WALLS_IN_MAP			-11
 
+# define NORTHEAST 0
+# define NORTHWEST 1
+# define SOUTHWEST 2
+# define SOUTHEAST 3
 
 typedef struct s_vector2D
 {
 	int	x;
-	int y;
-} t_vector2D;
+	int	y;
+}	t_vector2D;
 
 typedef struct s_char
 {
 	t_data			*sprite;
 	int				direction;
-	t_vector2D 		position;
-}
+	t_vector2D		position;
+}	t_char;
+
+typedef struct s_data
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	int		height;
+	int		width;
+}	t_data;
 
 typedef struct s_vars
 {
-    void    		*mlx;
-    void    		*window;
-    t_list  		*lst;
-    t_list  		*img_lst;
+	void			*mlx;
+	void			*window;
+	t_list			*lst;
+	t_list			*img_lst;
 	char			**map;
 	char			**save;
 	int				update;
 	int				items;
 	int				total_items;
+	int				random;
 	t_vector2D		size;
-	t_vector2D		last_position:
+	t_vector2D		last_position;
 	t_char			player;
 	t_data			*jump;
 	t_data			*sprites;
-} t_vars;
+	unsigned short	seed;
+}	t_vars;
 
 #endif

@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2.c                                           :+:      :+:    :+:   */
+/*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/02 20:57:37 by gamaral           #+#    #+#             */
-/*   Updated: 2023/09/03 17:57:32 by gamaral          ###   ########.fr       */
+/*   Created: 2023/09/03 21:10:59 by gamaral           #+#    #+#             */
+/*   Updated: 2023/09/03 21:23:18 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/so_long.h"
+#include "../../Includes/so_long.h"
 
-int	random_nb(t_vars *vars)
+t_data	*generate_jump(t_vars *vars)
 {
-	vars->bit = ((vars->seed) ^ (vars->seed >> 2) 
-			^ (vars->seed >> 3) ^ (vars->seed >> 5)) & 1;
-	vars->seed = (vars->seed >> 1) | (vars->bit << 15);
-	return (vars->seed);
+	t_data	*sprites;
+
+	sprites = malloc(sizeof(t_data) * 8);
+	if (!sprites)
+		return (NULL);
+	sprites[0] = generate_image(*vars, "CAMINHO PARA A IMAGEM", &vars->img_lst);
 }

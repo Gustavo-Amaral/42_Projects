@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 22:17:45 by gamaral           #+#    #+#             */
-/*   Updated: 2023/08/13 22:18:25 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/09/03 18:57:28 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,17 +98,20 @@ char	*ft_itoa(int n);
  * @param  *s: Starting memory pointer
  * @param  c: Value to be searched for
  * @param  n: How many slots in memory to search
- * @retval Pointer to the slot where the value was found, if not found, return NULL
+ * @retval Pointer to the slot where the value was found, 
+ * if not found, return NULL
  */
 void	*ft_memchr(const void *s, int c, size_t n);
 
 /**
- * @brief  Compares two memory arrays, from starting point to offset n
+ * @brief  Compares two memory arrays, 
+ * from starting point to offset n
  * @note
  * @param  *s1: Pointer to first memory array to be compared
  * @param  *s2: Pointer to second memory array to be compared
  * @param  n: Size to offset s1 and s2 for comparison
- * @retval Returns a positive value if s1 > s2, negative value if s1 < s2 and 0 if s1 = s2
+ * @retval Returns a positive value if s1 > s2, 
+ * negative value if s1 < s2 and 0 if s1 = s2
  */
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 
@@ -225,7 +228,8 @@ char	*ft_strchr(const char *s, int c);
  * @note
  * @param  *s1: First string to be compared
  * @param  *s2: Second string to be compared
- * @retval Returns a positive value if s1 > s2, negative value if s1 < s2 and NULL if s1 = s2
+ * @retval Returns a positive value if s1 > s2, 
+ * negative value if s1 < s2 and NULL if s1 = s2
  */
 int		ft_strcmp(char *s1, char *s2);
 
@@ -238,7 +242,8 @@ int		ft_strcmp(char *s1, char *s2);
 char	*ft_strdup(const char *s);
 
 /**
- * @brief  Iterates over a string, using the function pointed by f on each element of the string
+ * @brief  Iterates over a string, 
+ * using the function pointed by f on each element of the string
  * @note
  * @param  *s: String to be iterated on
  * @param  *f: Pointer to a function that is going to iterate each element
@@ -250,13 +255,15 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*));
  * @brief  Allocates memory and join two strings into one
  * @note
  * @param  *s1: First string to be joined
- * @param  *s2: Second string, is going to be appended to the end of the first string
+ * @param  *s2: Second string, is going to be appended 
+ * to the end of the first string
  * @retval Returns a pointer to the newly joined string
  */
 char	*ft_strjoin(char const *s1, char const *s2);
 
 /**
- * @brief  Concatenates string pointed by src into dst pointed string, up to size bytes
+ * @brief  Concatenates string pointed by src into dst 
+ * pointed string, up to size bytes
  * @note  Size must include one byte for NUL-terminating character
  * @param  *dst: Destination string
  * @param  *src: Source string to be concatenated on dst
@@ -266,7 +273,9 @@ char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 
 /**
- * @brief  copies up to size - 1 characters from the NUL-terminated string src to dst, NUL-terminating the result
+ * @brief  copies up to size - 1 characters 
+ * from the NUL-terminated string src to dst, 
+ * NUL-terminating the result
  * @note  Size must include one byte for NUL-terminating character
  * @param  *dst: Destination pointer
  * @param  *src: Pointer to the string to be copied
@@ -284,31 +293,41 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlen(const char *s);
 
 /**
- * @brief  Allocates memory to a newly created string, that is created over the iteration, of the function pointed to by f, over the string s
+ * @brief  Allocates memory to a newly created string, 
+ * that is created over the iteration, 
+ * of the function pointed to by f, over the string s
  * @note
  * @param  *s: String to be iterated on f
  * @param  *f: Pointer to function that is going to iterate s
- * @retval Returns the newly created string, resulting of the iteration of f over s
+ * @retval Returns the newly created string, 
+ * resulting of the iteration of f over s
  */
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
 /**
- * @brief  compares only the first (at most) n bytes of strings s1 and s2
+ * @brief  compares only the first (at most) n bytes of 
+ * strings s1 and s2
  * @note
  * @param  *s1: Pointer to first string to be compared
  * @param  *s2: Pointer to second string to be compared
  * @param  n: Ammount of bytes to be compared
- * @retval Returns a positive value if s1 > s2, negative value if s1 < s2 and NULL if s1 = s2
+ * @retval Returns a positive value if s1 > s2, 
+ * negative value if s1 < s2 and NULL if s1 = s2
  */
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 /**
- * @brief  finds the first occurrence of the substring little in the string big, where not more than len characters are searched
+ * @brief  finds the first occurrence of the substring little 
+ * in the string big, 
+ * where not more than len characters are searched
  * @note   The terminating null bytes ('\0') are  not compared
  * @param  *big: String to be searched on
  * @param  *little: String to be searched for, in big
  * @param  len: Ammount of characters to search for, at most
- * @retval Returns big if little is an empty string; if little occurs nowherein big, NULL is returned; otherwise a pointer to the first character of the first occurrence of little is returned
+ * @retval Returns big if little is an empty string; 
+ * if little occurs nowherein big, NULL is returned; 
+ * otherwise a pointer to the first character 
+ * of the first occurrence of little is returned
  */
 char	*ft_strnstr(const char *big, const char *little, size_t len);
 
@@ -317,7 +336,8 @@ char	*ft_strnstr(const char *big, const char *little, size_t len);
  * @note
  * @param  *s: String to be searched on
  * @param  c: Character to be searched for
- * @retval Returns a pointer to the last occurrence of the character c in the string s
+ * @retval Returns a pointer to the last occurrence 
+ * of the character c in the string s
  */
 char	*ft_strrchr(const char *s, int c);
 
@@ -331,9 +351,13 @@ char	*ft_strrchr(const char *s, int c);
 char	*ft_strtrim(char const *s1, char const *set);
 
 /**
- * @brief  Allocates (with malloc(3)) and returns a substring from the string ’s’.The substring begins at index ’start’ and is of maximum size ’len’
+ * @brief  Allocates (with malloc(3)) and returns a substring 
+ * from the string ’s’.
+ * The substring begins at index ’start’ 
+ * and is of maximum size ’len’
  * @note
- * @param  *s: String from which is the substring is going to be get
+ * @param  *s: String from which is the substring 
+ * is going to be get
  * @param  start: Starting index from string 's'
  * @param  len: Maximum size for the returned substring
  * @retval Returns a pointer to the formed substring
@@ -367,7 +391,8 @@ int		ft_toupper(int c);
 
 /**
  * @brief  Struct for linked list
- * @note   Content is a pointer for content of the node and next is a pointer to the next node of the list
+ * @note   Content is a pointer for content of the node 
+ * and next is a pointer to the next node of the list
  */
 typedef struct s_list
 {
@@ -393,10 +418,13 @@ t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 
 /**
- * @brief  Counts the ammount of nodes in the linked list, starting from the node lst
+ * @brief  Counts the ammount of nodes in the linked list, 
+ * starting from the node lst
  * @note
- * @param  *lst: First node to start counting how many nodes in the list, node pointed by lst included
- * @retval Returns the ammount of nodes in the list, including node pointed by lst
+ * @param  *lst: First node to start counting how many nodes in the list, 
+ * node pointed by lst included
+ * @retval Returns the ammount of nodes in the list, 
+ * including node pointed by lst
  */
 int		ft_lstsize(t_list *lst);
 
@@ -412,7 +440,8 @@ t_list	*ft_lstlast(t_list *lst);
  * @brief  Places a new node at the end of the linked list
  * @note
  * @param  **lst: Pointer to the linked list
- * @param  *new: Pointer to the new node to be placed at the end of the linked list
+ * @param  *new: Pointer to the new node to be placed 
+ * at the end of the linked list
  * @retval None
  */
 void	ft_lstadd_back(t_list **lst, t_list *new);
@@ -436,7 +465,8 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 
 /**
- * @brief Iterates on the nodes, starting from lst, using function pointed by f, over the content of the nodes
+ * @brief Iterates on the nodes, starting from lst, using function, 
+ * pointed by f, over the content of the nodes
  * @note
  * @param  *lst: Pointer to the first node to be iterated over
  * @param  *f: Function in charge of iterating over nodes' contents
@@ -445,18 +475,22 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 
 /**
- * @brief Iterates the list ’lst’ and applies the function ’f’ on the content of each node. Creates a new list resulting of the successive applications of the function ’f’. The ’del’ function is used to delete the content of a node if needed.
- * @note
+ * @brief Iterates the list ’lst’ 
+ * and applies the function ’f’ on the content of each node. 
+ * Creates a new list resulting of the successive applications 
+ * of the function ’f’. 
+ * The ’del’ function is used to delete the content of a node if needed.
  * @param  *lst: Pointer to the first node to be iterated over
- * @param  *(*f): Function in charge of iterating over nodes' contents
- * @param  *del: Function in charge of deleting the nodes, in case something goes wrong
- * @retval Returns a pointer to the linked list (Pointer to pointer to the first node)
+ * @param  *(*f): Function in charge of iterating over nodes' 
+ * contents
+ * @param  *del: Function in charge of deleting the nodes, 
+ * in case something goes wrong
+ * @retval Returns a pointer to the linked list 
+ * (Pointer to pointer to the first node)
  */
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
-
 /************** EXTRA FUNCTIONS **************/
-
 
 void	decimal_to_hexadecimal(int decimal_number, char *hexadecimal_string);
 
@@ -480,7 +514,8 @@ void	ft_revstr(char *str);
 
 /**
  * @brief  Returns the next line from a file descriptor 'fd'
- * @note   Next line is identified by a newline character '\n' or by the end of file
+ * @note   Next line is identified by a newline character '\n' 
+ * or by the end of file
  * @param  fd: File descriptor pointing to the file to be read
  * @retval Returns a pointer to the next line from the file pointed by 'fd'
  */
@@ -494,7 +529,7 @@ char	*get_next_line(int fd);
  * @param  *format: String to be passed as first argument
  * @retval Returns total number of printed characters
  */
-int	ft_printf(const char	*format, ...);
+int		ft_printf(const char	*format, ...);
 
 /**
  * @brief  Prints a character to the standard output
@@ -502,16 +537,17 @@ int	ft_printf(const char	*format, ...);
  * @param  c: Character to be printed
  * @retval Returns total number of printed characters
  */
-int	ft_print_char(char c);
+int		ft_print_char(char c);
 
 /**
- * @brief  Prints the conversion from 'num' to the hexadecimal value of it to the standard output
+ * @brief  Prints the conversion from 'num' to the hexadecimal 
+ * value of it to the standard output
  * @note Helper function to solve printf conversions
  * @param  num: Number to be printed
  * @param  c: Character to choose from uppercase or lowercase ('x' or 'X')
  * @retval Returns total number of printed characters
  */
-int	ft_print_hex(unsigned int num, const char c);
+int		ft_print_hex(unsigned int num, const char c);
 
 /**
  * @brief  Prints a number to the standard output
@@ -519,7 +555,7 @@ int	ft_print_hex(unsigned int num, const char c);
  * @param  num: Number to be printed
  * @retval Returns total number of printed characters
  */
-int	ft_print_nbr(int num);
+int		ft_print_nbr(int num);
 
 /**
  * @brief  Prints a pointer address to the standard output
@@ -527,7 +563,7 @@ int	ft_print_nbr(int num);
  * @param  *ptr: Pointer address to be printed
  * @retval Returns total number of printed characters
  */
-int	ft_print_ptr(void *ptr);
+int		ft_print_ptr(void *ptr);
 
 /**
  * @brief  Prints a string to the standard output
@@ -535,7 +571,7 @@ int	ft_print_ptr(void *ptr);
  * @param  *c: Pointer to string to be printed
  * @retval Returns total number of printed characters
  */
-int	ft_print_str(char *c);
+int		ft_print_str(char *c);
 
 /**
  * @brief  Prints an unsigned value to the standard output
@@ -543,6 +579,6 @@ int	ft_print_str(char *c);
  * @param  num: Number to be printed
  * @retval Returns total number of printed characters
  */
-int	ft_print_unsigned(unsigned int num);
+int		ft_print_unsigned(unsigned int num);
 
 #endif
