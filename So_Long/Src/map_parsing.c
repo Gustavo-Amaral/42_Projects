@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 21:02:19 by gamaral           #+#    #+#             */
-/*   Updated: 2023/09/17 19:59:10 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/10/01 21:39:18 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,19 +69,19 @@ static unsigned char	check_character(char character,
 	if (character == 'E')
 	{
 		exit_count++;
-		game->exit->total_count = exit_count;
+		game->exit.total_count = exit_count;
 	}
 	if (character == 'P')
 	{
 		player_count++;
-		game->player->total_count = player_count;
-		game->player->position->x_position = x;
-		game->player->position->y_position = y;
+		game->player.total_count = player_count;
+		game->player.position.x_position = x;
+		game->player.position.y_position = y;
 	}
 	if (character == 'C')
 	{
 		collectible_count++;
-		game->collectibles->total_count = collectible_count;
+		game->collectibles.total_count = collectible_count;
 	}
 	return (TRUE);
 }
@@ -103,32 +103,33 @@ static unsigned char	check_map_characters(t_game *game)
 		}
 		y++;
 	}
-	if (game->collectibles->total_count < 1 || game->exit->total_count != 1
-		|| game->player->total_count != 1)
+	if (game->collectibles.total_count < 1 || game->exit.total_count != 1
+		|| game->player.total_count != 1)
 		return (FALSE);
 	return (TRUE);
 }
 
 unsigned char	check_map_content(t_game *game)
 {
+	printf("map_content\n");
 	if (!check_map_rectangular(game->map))
 	{
-		handle_error(MAP_NOT_RECTANGULAR);
+		handle_error(MAP_NOT_RECTANGULAR, game);
 		return (FALSE);
 	}
 	if (!check_map_borders(game->map))
 	{
-		handle_error(INVALID_WALLS_IN_MAP);
+		handle_error(INVALID_WALLS_IN_MAP, game);
 		return (FALSE);
 	}
 	if (!check_map_characters(game))
 	{
-		handle_error(INVALID_CHARS_IN_MAP);
+		handle_error(INVALID_CHARS_IN_MAP, game);
 		return (FALSE);
 	}
 	if (!check_valid_path(game))
 	{
-		handle_error(INVALID_PATH_IN_MAP);
+		handle_error(INVALID_PATH_IN_MAP, game);
 		return (FALSE);
 	}
 	return (TRUE);

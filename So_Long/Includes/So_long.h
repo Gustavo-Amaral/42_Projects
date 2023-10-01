@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 16:53:57 by gamaral           #+#    #+#             */
-/*   Updated: 2023/09/17 20:33:31 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/10/01 21:35:42 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define SO_LONG_H
 
 # include "../Libft/libft.h"
-# include "../minilibx-linux/mlx.h"
-# include "../minilibx-linux/mlx_int.h"
+# include "../mlx_linux/mlx.h"
+# include "../mlx_linux/mlx_int.h"
 
 /* BOOLEAN DEFINITIONS */
 
@@ -44,6 +44,7 @@
 # define INVALID_WALLS_IN_MAP			"Map contains invalid walls scheme!"
 # define INVALID_PATH_IN_MAP			"Map does not contain a valid path!"
 # define DUPLICATE_UNIT                 "Not allowed duplicated unit!"
+# define TOTAL_COLLECTIBLES_ERROR		"You get more items than available?!"
 
 /* ARGUMENT PASSING ERRORS */
 
@@ -71,6 +72,32 @@
 # define PLAYER_IMAGE					"../Images/Player/Player.xpm"
 # define COLLECT_IMAGE					"../Images/Collectibles/Collectible.xpm"
 
+/* MOVEMENT KEYS */
+
+# define CAP_A	0x0041
+# define CAP_D	0x0044
+# define CAP_S	0x0053
+# define CAP_W	0x0057
+
+# define A	0x0061
+# define D	0x0064
+# define S	0x0073
+# define W	0x0077
+
+# define LEFT	0xFF51
+# define RIGHT	0xFF53
+# define DOWN	0xFF54
+# define UP		0xFF52
+
+/* USEFUL KEYS */
+
+# define ESC	0xFF1B
+
+/* MOVEMENT ORIENTATION MACROS */
+
+# define VERTICAL	"vertical"
+# define HORIZONTAL	"horizontal"
+
 /* MATRIX POSITION STRUCTURE */
 
 typedef struct s_vector2D
@@ -94,20 +121,21 @@ typedef struct s_characters
 {
 	int			*img;
 	int			total_count;
-	t_vector2D	*position;
+	t_vector2D	position;
 }	t_characters;
-
 
 /* GENERAL GAME STRUCTURE */
 
 typedef struct s_game
 {
-	t_characters	*player;
-	t_characters	*collectibles;
-	t_characters	*exit;
-	t_characters	*wall;
-	t_characters	*ground;
-	t_window		*window;
+	t_characters	player;
+	t_characters	collectibles;
+	t_characters	exit;
+	t_characters	wall;
+	t_characters	ground;
+	t_window		window;
+	int				items_collected;
+	int				total_moves;
 	void			*mlx;
 	char			**map;
 	char			**aux_map;
@@ -115,14 +143,14 @@ typedef struct s_game
 
 /* MAP_UTILS */
 
-char**const		read_map(char *map);
-unsigned char	check_map_extension(char *map);
+char			**read_map(char *map, t_game *game);
+unsigned char	check_map_extension(char *map, t_game *game);
 unsigned char	check_map_validity(char *map, t_game *game);
 
 /* UTILS */
 
-void			handle_error(char *error);
-void			end_and_free_game(t_game *game);
+void			handle_error(char *error, t_game *game);
+int				end_and_free_game(t_game *game);
 
 /* MAP_PARSING */
 
@@ -136,5 +164,9 @@ unsigned char	check_valid_path(t_game *game);
 
 void			setting_window_size(t_game *game);
 unsigned char	render_game(t_game *game);
+
+/* HOOK_FUNCS */
+
+int				read_keys(int keypress, t_game *game);
 
 #endif
