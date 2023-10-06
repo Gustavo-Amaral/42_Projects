@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 16:53:57 by gamaral           #+#    #+#             */
-/*   Updated: 2023/10/01 21:35:42 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/10/06 20:38:30 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,11 @@
 
 /* IMAGES PATHS */
 
-# define EXIT_IMAGE						"../Images/Exit/Exit.xpm"
-# define WALL_IMAGE						"../Images/Blocks/Wall.xpm"
-# define GROUND_IMAGE					"../Images/Blocks/Ground.xpm"
-# define PLAYER_IMAGE					"../Images/Player/Player.xpm"
-# define COLLECT_IMAGE					"../Images/Collectibles/Collectible.xpm"
+# define EXIT_IMAGE						"./Images/Exit/Exit.xpm"
+# define WALL_IMAGE						"./Images/Blocks/Wall.xpm"
+# define GROUND_IMAGE					"./Images/Blocks/Ground.xpm"
+# define PLAYER_IMAGE					"./Images/Player/Player.xpm"
+# define COLLECT_IMAGE					"./Images/Collectibles/Collectible.xpm"
 
 /* MOVEMENT KEYS */
 
@@ -119,7 +119,7 @@ typedef struct s_window
 
 typedef struct s_characters
 {
-	int			*img;
+	void		*img;
 	int			total_count;
 	t_vector2D	position;
 }	t_characters;
@@ -144,8 +144,9 @@ typedef struct s_game
 /* MAP_UTILS */
 
 char			**read_map(char *map, t_game *game);
-unsigned char	check_map_extension(char *map, t_game *game);
+unsigned char	check_map_extension(char *map);
 unsigned char	check_map_validity(char *map, t_game *game);
+t_game			*game_struct_init(t_game *game);
 
 /* UTILS */
 

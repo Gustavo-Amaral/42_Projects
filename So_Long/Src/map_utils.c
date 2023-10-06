@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 17:30:58 by gamaral           #+#    #+#             */
-/*   Updated: 2023/10/01 21:46:41 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/10/06 20:01:06 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ static void	init_characters(t_characters character)
 	character.position.y_position = 0;
 }
 
-static unsigned char	game_struct_init(t_game *game)
+t_game	*game_struct_init(t_game *game)
 {
 	printf("init\n");
-	game = malloc(sizeof(t_game));
+	game = malloc(sizeof(t_game) * 1);
 	if (!game)
 	{
 		handle_error(MEMORY_ALLOCATION_FAILURE, NULL);
@@ -46,10 +46,10 @@ static unsigned char	game_struct_init(t_game *game)
 	init_characters(game->wall);
 	init_characters(game->ground);
 	printf("init feito\n");
-	return (TRUE);
+	return (game);
 }
 
-unsigned char	check_map_extension(char *map, t_game *game)
+unsigned char	check_map_extension(char *map)
 {
 	char	*extension;
 
@@ -90,13 +90,14 @@ char	**read_map(char *map, t_game *game)
 	if (close(fildes) == -1)
 		handle_error(MAP_CLOSE_FAILED, game);
 	printf("returning\n");
+	printf("line: %s\nUltima linha: %s\n", parsed_map[2], parsed_map[10]);
 	return (parsed_map);
 }
 
 unsigned char	check_map_validity(char *map, t_game *game)
 {
 	int				fildes;
-	unsigned char	flag;
+	char			**aux;
 
 	fildes = open(map, __O_DIRECTORY);
 	if (fildes >= 0)
@@ -104,12 +105,11 @@ unsigned char	check_map_validity(char *map, t_game *game)
 		handle_error(MAP_IS_A_DIRECTORY, NULL);
 		return (FALSE);
 	}
-	flag = game_struct_init(game);
-	if (!flag)
+	if (!game)
 		return (FALSE);
 	printf("lendo mapa\n");
 	game->map = read_map(map, game);
-	printf("Lendo mapa de novo\n");
+	printf("string: %s\n", game->map[1]);
 	game->aux_map = read_map(map, game);
 	check_map_content(game);
 	return (TRUE);

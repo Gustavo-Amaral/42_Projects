@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 17:18:45 by gamaral           #+#    #+#             */
-/*   Updated: 2023/10/01 21:10:10 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/10/06 19:58:17 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ int	main(int argc, char **argv)
 		handle_error(INVALID_NUMBER_OF_ARGUMENTS, NULL);
 		return (0);
 	}
-	if (!check_map_extension(argv[1], game))
+	if (!check_map_extension(argv[1]))
 		return (0);
+	game = game_struct_init(game);
 	if (!check_map_validity(argv[1], game))
 		return (0);
 	if (!render_game(game))
