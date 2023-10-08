@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 16:18:12 by gamaral           #+#    #+#             */
-/*   Updated: 2023/10/06 21:47:16 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/10/08 21:52:54 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	init_images(t_game *game)
 			&blk_size, &blk_size);
 	if (!game->collectibles.img)
 		handle_error(COLLECT_IMAGE_FAILED, game);
-	game->exit.img = mlx_xpm_file_to_image(game->mlx, PLAYER_IMAGE, 
+	game->exit.img = mlx_xpm_file_to_image(game->mlx, EXIT_IMAGE, 
 			&blk_size, &blk_size);
 	if (!game->exit.img)
 		handle_error(EXIT_IMAGE_FAILED, game);
@@ -37,25 +37,23 @@ static void	init_images(t_game *game)
 			&blk_size, &blk_size);
 	if (!game->ground.img)
 		handle_error(GROUND_IMAGE_FAILED, game);
-	printf("init images\n");
 }
 
 static void	load_img_to_window(char character, t_game *game, int x, int y)
 {
-	printf("load images\n");
 	if (character == '0')
 		mlx_put_image_to_window(game->mlx, game->window.window, 
 			game->ground.img, x * BLK_SIZE, y * BLK_SIZE);
-	if (character == '1')
+	else if (character == '1')
 		mlx_put_image_to_window(game->mlx, game->window.window, 
 			game->wall.img, x * BLK_SIZE, y * BLK_SIZE);
-	if (character == 'P')
+	else if (character == 'P')
 		mlx_put_image_to_window(game->mlx, game->window.window, 
 			game->player.img, x * BLK_SIZE, y * BLK_SIZE);
-	if (character == 'C')
+	else if (character == 'C')
 		mlx_put_image_to_window(game->mlx, game->window.window, 
 			game->collectibles.img, x * BLK_SIZE, y * BLK_SIZE);
-	if (character == 'E')
+	else if (character == 'E')
 		mlx_put_image_to_window(game->mlx, game->window.window, 
 			game->exit.img, x * BLK_SIZE, y * BLK_SIZE);
 }
@@ -93,7 +91,6 @@ void	setting_window_size(t_game *game)
 
 unsigned char	render_game(t_game *game)
 {
-	printf("render game\n");
 	game->mlx = mlx_init();
 	if (!game->mlx)
 	{
@@ -110,7 +107,6 @@ unsigned char	render_game(t_game *game)
 	}
 	init_images(game);
 	load_images(game);
-	printf("passou do load images\n");
 	mlx_key_hook(game->window.window, read_keys, game);
 	mlx_hook(game->window.window, 17, 1L << 0, end_and_free_game, game);
 	mlx_loop(game->mlx);

@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 21:02:19 by gamaral           #+#    #+#             */
-/*   Updated: 2023/10/01 21:39:18 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/10/08 16:31:00 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,6 @@ static unsigned char	check_map_characters(t_game *game)
 
 unsigned char	check_map_content(t_game *game)
 {
-	printf("map_content\n");
 	if (!check_map_rectangular(game->map))
 	{
 		handle_error(MAP_NOT_RECTANGULAR, game);

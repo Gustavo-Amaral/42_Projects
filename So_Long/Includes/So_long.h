@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 16:53:57 by gamaral           #+#    #+#             */
-/*   Updated: 2023/10/06 20:38:30 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/10/08 16:50:24 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 
 /* WINDOW DEFINITIONS */
 
-# define BLK_SIZE		40
+# define BLK_SIZE		70
 
 /* MAP RELATED ERRORS */
 
