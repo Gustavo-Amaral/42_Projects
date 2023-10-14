@@ -6,11 +6,11 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 19:35:03 by gamaral           #+#    #+#             */
-/*   Updated: 2023/10/08 22:07:04 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/10/14 19:19:51 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "So_long.h"
+#include "So_long_bonus.h"
 
 static void	init_characters(t_characters character)
 {

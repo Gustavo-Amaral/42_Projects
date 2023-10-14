@@ -6,11 +6,11 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 19:35:10 by gamaral           #+#    #+#             */
-/*   Updated: 2023/10/08 19:35:12 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/10/14 19:19:46 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "So_long.h"
+#include "So_long_bonus.h"
 
 static unsigned char	check_map_rectangular(char **map)
 {

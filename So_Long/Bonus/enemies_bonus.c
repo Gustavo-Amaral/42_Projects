@@ -6,17 +6,25 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 19:56:04 by gamaral           #+#    #+#             */
-/*   Updated: 2023/10/08 22:06:45 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/10/14 20:58:52 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "So_long.h"
+#include "So_long_bonus.h"
 
-static int count_map_zeros(t_game *game)
+void		init_enemy_img(t_game *game, int *blk)
+{
+	game->enemies.img = mlx_xpm_file_to_image(game->mlx, ENEMY_IMAGE, 
+			blk, blk);
+	if (!game->enemies.img)
+		handle_error(ENEMY_IMAGE_FAILED, game);
+}
+
+static int	count_map_zeros(t_game *game)
 {
 	int	x;
 	int	y;
-	int counter;
+	int	counter;
 
 	y = 0;
 	counter = 0;
@@ -45,7 +53,8 @@ static void	get_map_dimensions(t_game *game, int *height, int *width)
 	*height = y;
 }
 
-static void	random_place_enemy(t_game *game, char **map, int max_height, int max_width)
+static void	random_place_enemy(t_game *game, char **map, 
+	int max_height, int max_width)
 {
 	int	y;
 	int	x;
@@ -58,7 +67,7 @@ static void	random_place_enemy(t_game *game, char **map, int max_height, int max
 		{
 			if (map[y][x] == '0')
 			{
-				map[y][x] == 'F';
+				map[y][x] = 'F';
 				game->enemies.position.x_position = x;
 				game->enemies.position.y_position = y;
 				return ;
@@ -67,31 +76,19 @@ static void	random_place_enemy(t_game *game, char **map, int max_height, int max
 	}
 }
 
-static void place_enemies_in_map(t_game *game)
+//enemy_number = count_map_zeros(game) % 10; -> possibility to increase enemies
+int	place_enemies_in_map(t_game *game)
 {
 	int		enemy_number;
 	int		width;
 	int		height;
 
-	//enemy_number = count_map_zeros(game) % 10;
 	enemy_number = 1;
 	get_map_dimensions(game, &height, &width);
-	while(enemy_number > 0)
+	while (enemy_number > 0)
 	{
 		random_place_enemy(game, game->map, height, width);
 		enemy_number--;
 	}
-}
-
-int	render_enemies(t_game *game)
-{
-	int	blk_size;
-
-	blk_size = BLK_SIZE;
-	game->enemies.img = mlx_xpm_file_to_image(game->mlx, ENEMY_IMAGE, 
-			&blk_size, &blk_size);
-	if (!game->player.img)
-		handle_error(ENEMY_IMAGE_FAILED, game);
-	place_enemies_in_map(game);
 	return (TRUE);
 }

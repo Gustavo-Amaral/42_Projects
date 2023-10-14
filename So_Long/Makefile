@@ -6,7 +6,7 @@
 #    By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/01 19:05:59 by gamaral           #+#    #+#              #
-#    Updated: 2023/10/08 19:41:38 by gamaral          ###   ########.fr        #
+#    Updated: 2023/10/14 19:23:59 by gamaral          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,10 +43,11 @@ $(NAME): $(OBJS) $(Libft)
 Libft:
 	${MAKE} -C ${LIBFTPATH} bonus
 
-bonus: $(OBJS_BONUS) $(Libft)
+bonus: $(OBJS) $(OBJS_BONUS) $(Libft)
 	${MAKE} -C ${LIBFTPATH} bonus
+	$(CC) $(OBJS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME) $(LIBFT)
 	$(CC) $(OBJS_BONUS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME_BONUS) $(LIBFT)
-	${RM} ${OBJS_BONUS}
+	${RM} ${OBJS} ${OBJS_BONUS}
 	${MAKE} -C ${LIBFTPATH} fclean
 
 clean:
@@ -54,7 +55,7 @@ clean:
 	${MAKE} -C ${LIBFTPATH} clean 
 
 fclean:
-	${RM} ${OBJS} ${NAME}
+	${RM} ${OBJS} ${NAME} ${NAME_BONUS}
 	${MAKE} -C ${LIBFTPATH} fclean
 
 re: fclean all

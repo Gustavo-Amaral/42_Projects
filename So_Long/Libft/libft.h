@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 22:17:45 by gamaral           #+#    #+#             */
-/*   Updated: 2023/10/08 21:01:20 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/10/14 20:00:56 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ int		ft_isprint(int c);
 
 /**
  * @brief  Converts an integer to a character, unit by unit
- * @note
+ * @note   Memory needs to be freed, 
+ * since it is allocated for the returned string
  * @param  n: integer to be converted
  * @retval Converted resultant characters
  */

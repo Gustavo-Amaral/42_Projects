@@ -6,11 +6,11 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 19:35:37 by gamaral           #+#    #+#             */
-/*   Updated: 2023/10/08 21:51:34 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/10/14 20:58:34 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "So_long.h"
+#include "So_long_bonus.h"
 
 int	main(int argc, char **argv)
 {
@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 	game = game_struct_init(game);
 	if (!check_map_validity(argv[1], game))
 		return (1);
-	if (!render_enemies(game))
+	if (!place_enemies_in_map(game))
 		return (1);
 	if (!render_game(game))
 		return (1);

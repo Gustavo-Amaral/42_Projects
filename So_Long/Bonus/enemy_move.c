@@ -6,11 +6,11 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 21:55:59 by gamaral           #+#    #+#             */
-/*   Updated: 2023/10/08 22:15:17 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/10/14 19:40:02 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "So_long.h"
+#include "So_long_bonus.h"
 
 static unsigned char	is_valid_enemy_movement(t_game *game, int position, 
 	char *orientation)
@@ -18,8 +18,8 @@ static unsigned char	is_valid_enemy_movement(t_game *game, int position,
 	size_t	x;
 	size_t	y;
 
-	x = game->player.position.x_position;
-	y = game->player.position.y_position;
+	x = game->enemies.position.x_position;
+	y = game->enemies.position.y_position;
 	if (ft_strcmp(orientation, HORIZONTAL) == 0)
 	{
 		if (game->map[y][x + position] == '1' || 
@@ -42,8 +42,8 @@ void	mirror_enemy_move_x(t_game *game, int position, char *orientation)
 	int	x_pos;
 	int	y_pos;
 
-	x_pos = game->player.position.x_position;
-	y_pos = game->player.position.y_position;
+	x_pos = game->enemies.position.x_position;
+	y_pos = game->enemies.position.y_position;
 	if (!is_valid_enemy_movement(game, position, orientation))
 		return ;
 	if (ft_strcmp(orientation, HORIZONTAL) == 0)
@@ -56,6 +56,7 @@ void	mirror_enemy_move_x(t_game *game, int position, char *orientation)
 	}
 	else
 		return ;
+	check_player_colision(game);
 }
 
 void	mirror_enemy_move_y(t_game *game, int position, char *orientation)
@@ -63,8 +64,8 @@ void	mirror_enemy_move_y(t_game *game, int position, char *orientation)
 	int	x_pos;
 	int	y_pos;
 
-	x_pos = game->player.position.x_position;
-	y_pos = game->player.position.y_position;
+	x_pos = game->enemies.position.x_position;
+	y_pos = game->enemies.position.y_position;
 	if (!is_valid_enemy_movement(game, position, orientation))
 		return ;
 	if (ft_strcmp(orientation, VERTICAL) == 0)
@@ -77,11 +78,17 @@ void	mirror_enemy_move_y(t_game *game, int position, char *orientation)
 	}
 	else
 		return ;
+	check_player_colision(game);
 }
 
 void	check_player_colision(t_game *game)
 {
-	if (game->player.position.x_position == game->enemies.position.x_position && 
+	if (game->player.position.x_position == game->enemies.position.x_position 
+		&& 
 		game->player.position.y_position == game->enemies.position.y_position)
+	{
+		ft_printf("\nMagic Portal: WHAT?!?!?!\nHOW THE HECK YOU GOT ");
+		ft_printf("HIT BY THE ENEMY?!\nARE YOU BLIND?!\nJEEEEZ!!!\n\n");
 		end_and_free_game(game);
+	}
 }

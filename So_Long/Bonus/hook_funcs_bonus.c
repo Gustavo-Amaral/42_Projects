@@ -6,11 +6,11 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 19:35:58 by gamaral           #+#    #+#             */
-/*   Updated: 2023/10/08 22:14:32 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/10/14 21:03:17 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "So_long.h"
+#include "So_long_bonus.h"
 
 static unsigned char	is_valid_movement(t_game *game, int position, 
 	char *orientation)
@@ -49,14 +49,14 @@ static void	check_collectibles(t_game *game, int x_pos, int y_pos)
 		game->items_collected++;
 		if (game->items_collected < game->collectibles.total_count)
 		{
-			ft_printf("Magic Portal: YOU STILL NOT DONE?!\n");
-			ft_printf("Magic Portal: %d fire shit left, MOVE THAT ASS!\n", 
+			ft_printf("\nMagic Portal: YOU STILL NOT DONE?!\n");
+			ft_printf("Magic Portal: %d fire shit left, MOVE THAT ASS!\n\n", 
 				(game->collectibles.total_count - game->items_collected));
 		}
 		else if (game->items_collected == game->collectibles.total_count)
 		{
-			ft_printf("Magic Portal: FINALLY, my grandma would be faster...\n");
-			ft_printf("Magic Portal: Lets leave this shitty game for good!\n");
+			ft_printf("\nMagic Portal: FINALLY, my grandma would be faster...\n");
+			ft_printf("Magic Portal: Lets leave this shitty game for good!\n\n");
 		}
 		else
 			handle_error(TOTAL_COLLECTIBLES_ERROR, game);
@@ -83,6 +83,7 @@ static void	move_player_x(t_game *game, int position, char *orientation)
 	else
 		return ;
 	game->total_moves++;
+	ft_print_movements(game);
 	ft_printf("Magic Portal: %d moves already... Couldn't you do it better?!\n", 
 		game->total_moves);
 	check_collectibles(game, game->player.position.x_position, 
@@ -110,6 +111,7 @@ static void	move_player_y(t_game *game, int position, char *orientation)
 	else
 		return ;
 	game->total_moves++;
+	ft_print_movements(game);
 	ft_printf("Magic Portal: %d moves already... Couldn't you do it better?!\n", 
 		game->total_moves);
 	check_collectibles(game, game->player.position.x_position, 

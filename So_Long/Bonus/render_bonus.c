@@ -6,11 +6,11 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 19:34:56 by gamaral           #+#    #+#             */
-/*   Updated: 2023/10/08 21:52:33 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/10/14 20:44:14 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "So_long.h"
+#include "So_long_bonus.h"
 
 static void	init_images(t_game *game)
 {
@@ -37,6 +37,7 @@ static void	init_images(t_game *game)
 			&blk_size, &blk_size);
 	if (!game->ground.img)
 		handle_error(GROUND_IMAGE_FAILED, game);
+	init_enemy_img(game, &blk_size);
 }
 
 static void	load_img_to_window(char character, t_game *game, int x, int y)

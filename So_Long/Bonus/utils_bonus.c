@@ -6,11 +6,26 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 19:34:47 by gamaral           #+#    #+#             */
-/*   Updated: 2023/10/08 19:34:50 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/10/14 21:07:16 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "So_long.h"
+#include "So_long_bonus.h"
+
+void	ft_print_movements(t_game *game)
+{
+	char	*movements;
+	char	*phrase;
+	//char	*aux_phrase;
+
+	movements = ft_itoa(game->total_moves);
+	phrase = ft_strjoin("Magic Portal: ", movements);
+	//aux_phrase = ft_strjoin(phrase, " moves! Couldn't you do it better?!");
+	mlx_string_put(game->mlx, game->window.window, 40, 20, 99999, phrase);
+	free(movements);
+	free(phrase);
+	//free(aux_phrase);
+}
 
 void	handle_error(char *error, t_game *game)
 {
@@ -32,6 +47,8 @@ static void	destroy_imgs(t_game *game)
 		mlx_destroy_image(game->mlx, game->ground.img);
 	if (game->exit.img)
 		mlx_destroy_image(game->mlx, game->exit.img);
+	if (game->enemies.img)
+		mlx_destroy_image(game->mlx, game->enemies.img);
 }
 
 static void	free_map(char **map)

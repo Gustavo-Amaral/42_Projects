@@ -6,11 +6,11 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 17:14:26 by gamaral           #+#    #+#             */
-/*   Updated: 2023/10/08 19:32:00 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/10/14 19:19:37 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "So_long.h"
+#include "So_long_bonus.h"
 
 static void	fill_path(char **map, int x, int y, t_window window)
 {
