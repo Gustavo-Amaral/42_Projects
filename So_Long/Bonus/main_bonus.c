@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 19:35:37 by gamaral           #+#    #+#             */
-/*   Updated: 2023/10/14 20:58:34 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/10/15 11:39:43 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	main(int argc, char **argv)
 {
 	t_game	*game;
 
+	game = NULL;
 	if (argc != 2)
 	{
 		handle_error(INVALID_NUMBER_OF_ARGUMENTS, NULL);

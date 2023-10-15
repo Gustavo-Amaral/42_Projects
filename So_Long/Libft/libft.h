@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 22:17:45 by gamaral           #+#    #+#             */
-/*   Updated: 2023/10/14 20:00:56 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/10/15 11:32:04 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -495,12 +495,6 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
  */
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
-
-
-
-
-
-
 /************** EXTRA FUNCTIONS **************/
 
 void	decimal_to_hexadecimal(int decimal_number, char *hexadecimal_string);
@@ -523,13 +517,7 @@ void	ft_revstr(char *str);
  * @param  array: 2D array to be copied
  * @retval Returns a copy from array
 */
-void	**ft_2D_arrcpy(void **array);
-
-
-
-
-
-
+void	**ft_2d_arrcpy(void **array);
 
 /* ****************** GET_NEXT_LINE ****************** */
 
@@ -551,12 +539,6 @@ void	**ft_2D_arrcpy(void **array);
  * @retval Returns a pointer to the next line from the file pointed by 'fd'
  */
 char	*get_next_line(int fd);
-
-
-
-
-
-
 
 /* ****************** FT_PRINTF ****************** */
 

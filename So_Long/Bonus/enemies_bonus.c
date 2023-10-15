@@ -6,13 +6,13 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 19:56:04 by gamaral           #+#    #+#             */
-/*   Updated: 2023/10/14 20:58:52 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/10/15 11:39:31 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "So_long_bonus.h"
 
-void		init_enemy_img(t_game *game, int *blk)
+void	init_enemy_img(t_game *game, int *blk)
 {
 	game->enemies.img = mlx_xpm_file_to_image(game->mlx, ENEMY_IMAGE, 
 			blk, blk);
@@ -20,7 +20,7 @@ void		init_enemy_img(t_game *game, int *blk)
 		handle_error(ENEMY_IMAGE_FAILED, game);
 }
 
-static int	count_map_zeros(t_game *game)
+/*static int	count_map_zeros(t_game *game)
 {
 	int	x;
 	int	y;
@@ -40,7 +40,7 @@ static int	count_map_zeros(t_game *game)
 		y++;
 	}
 	return (counter);
-}
+}*/
 
 static void	get_map_dimensions(t_game *game, int *height, int *width)
 {

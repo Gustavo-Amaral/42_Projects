@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 19:35:03 by gamaral           #+#    #+#             */
-/*   Updated: 2023/10/14 19:19:51 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/10/15 11:40:00 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ char	**read_map(char *map, t_game *game)
 unsigned char	check_map_validity(char *map, t_game *game)
 {
 	int				fildes;
-	char			**aux;
 
 	fildes = open(map, __O_DIRECTORY);
 	if (fildes >= 0)
