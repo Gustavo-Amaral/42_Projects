@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 19:56:04 by gamaral           #+#    #+#             */
-/*   Updated: 2023/10/15 11:39:31 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/10/22 15:36:48 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 void	init_enemy_img(t_game *game, int *blk)
 {
-	game->enemies.img = mlx_xpm_file_to_image(game->mlx, ENEMY_IMAGE, 
-			blk, blk);
+	game->enemies.img = mlx_xpm_file_to_image(game->mlx, ENEMY_IMAGE, blk, blk);
 	if (!game->enemies.img)
 		handle_error(ENEMY_IMAGE_FAILED, game);
 }
@@ -53,8 +52,7 @@ static void	get_map_dimensions(t_game *game, int *height, int *width)
 	*height = y;
 }
 
-static void	random_place_enemy(t_game *game, char **map, 
-	int max_height, int max_width)
+static void	random_place_enemy(t_game *game, char **map, int max_height, int max_width)
 {
 	int	y;
 	int	x;

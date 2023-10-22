@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 19:35:10 by gamaral           #+#    #+#             */
-/*   Updated: 2023/10/14 19:19:46 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/10/22 15:42:19 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static unsigned char	check_map_borders(char **map)
 					return (FALSE);
 			if (x == 0 || map[y][x + 1] == '\n')
 				if (map[y][x] != '1')
-					return (FALSE); 
+					return (FALSE);
 			x++;
 		}
 		y++;
@@ -56,15 +56,13 @@ static unsigned char	check_map_borders(char **map)
 	return (TRUE);
 }
 
-static unsigned char	check_character(char character, 
-	t_game *game, int y, int x)
+static unsigned char	check_character(char character, t_game *game, int y, int x)
 {
 	static int	exit_count;
 	static int	player_count;
 	static int	collectible_count;
 
-	if (character != 'E' && character != 'P' && character != 'C'
-		& character != '0' && character != '1')
+	if (character != 'E' && character != 'P' && character != 'C' && character != '0' && character != '1')
 		return (FALSE);
 	if (character == 'E')
 	{
@@ -103,8 +101,7 @@ static unsigned char	check_map_characters(t_game *game)
 		}
 		y++;
 	}
-	if (game->collectibles.total_count < 1 || game->exit.total_count != 1
-		|| game->player.total_count != 1)
+	if (game->collectibles.total_count < 1 || game->exit.total_count != 1 || game->player.total_count != 1)
 		return (FALSE);
 	return (TRUE);
 }

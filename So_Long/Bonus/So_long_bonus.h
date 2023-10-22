@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 16:53:57 by gamaral           #+#    #+#             */
-/*   Updated: 2023/10/14 20:44:36 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/10/22 15:44:18 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,10 +183,8 @@ void			init_enemy_img(t_game *game, int *blk);
 
 /* ENEMY_MOVE */
 
-void			mirror_enemy_move_x(t_game *game, int position, 
-					char *orientation);
-void			mirror_enemy_move_y(t_game *game, int position, 
-					char *orientation);
+void			mirror_enemy_move_x(t_game *game, int position, char *orientation);
+void			mirror_enemy_move_y(t_game *game, int position, char *orientation);
 void			check_player_colision(t_game *game);
 
 #endif
