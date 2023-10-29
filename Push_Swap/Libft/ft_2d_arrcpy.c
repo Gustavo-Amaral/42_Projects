@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:57:57 by gamaral           #+#    #+#             */
-/*   Updated: 2023/10/15 11:33:06 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/10/29 14:50:00 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,23 @@
 
 void	**ft_2d_arrcpy(void **array)
 {
-	unsigned char	**aux_array;
+	char	**aux_array;
+	void	**res_array;
 	size_t			y;
-	size_t			length;
 
-	aux_array = (unsigned char **)array;
-	length = 0;
+	aux_array = (char **)array;
 	y = 0;
 	while (aux_array[y])
 		y++;
-	aux_array = malloc(sizeof(unsigned char *) * (y + 1));
+	res_array = malloc(sizeof(char *) * (y + 1));
 	if (!aux_array)
 		return (NULL);
 	y = 0;
-	while ((unsigned char)array[y])
+	while (aux_array[y])
 	{
-		aux_array[y] = ft_strdup(array[y]);
+		res_array[y] = ft_strdup((const char *)aux_array[y]);
 		y++;
 	}
-	aux_array[y] = NULL;
-	return (aux_array);
+	res_array[y] = NULL;
+	return (res_array);
 }

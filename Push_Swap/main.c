@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 17:02:34 by gamaral           #+#    #+#             */
-/*   Updated: 2023/10/22 21:32:54 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/10/29 17:42:51 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	init_stack(t_list **stack, int argc, char **argv)
 {
 	t_list	*new;
 	char	**args;
+	int		*aux;
 	int		i;
 
 	i = 0;
@@ -28,13 +29,14 @@ static void	init_stack(t_list **stack, int argc, char **argv)
 	}
 	while (args[i])
 	{
-		new = ft_lstnew(ft_atoi(args[i]));
+		aux = malloc(sizeof(int *));
+		*aux = ft_atoi(args[i]);
+		new = ft_lstnew(aux);
 		ft_lstadd_back(stack, new);
 		i++;
 	}
-	index_stack(stack);
 	if (argc == 2)
-		ft_free(args);
+		array_free(args);
 }
 
 int	main(int argc, char **argv)
@@ -50,5 +52,15 @@ int	main(int argc, char **argv)
 	*stack_a = NULL;
 	*stack_b = NULL;
 	init_stack(stack_a, argc, argv);
+	ft_lstprintall(*stack_a);
+	if (is_sorted(stack_a))
+	{
+		lst_free(stack_a);
+		lst_free(stack_b);
+		return (0);
+	}
+	//sort_stack(stack_a, stack_b);
+	lst_free(stack_a);
+	lst_free(stack_b);
 	return (0);
 }

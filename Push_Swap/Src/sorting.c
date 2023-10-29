@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstprintone.c                                   :+:      :+:    :+:   */
+/*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/22 18:00:00 by gamaral           #+#    #+#             */
-/*   Updated: 2023/10/29 17:12:55 by gamaral          ###   ########.fr       */
+/*   Created: 2023/10/29 17:44:48 by gamaral           #+#    #+#             */
+/*   Updated: 2023/10/29 19:53:23 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../Includes/Push_Swap.h"
 
-void	ft_lstprintone(t_list *lst_elem)
+void	sort_stack(t_list **stack_a, t_list **stack_b)
 {
-	static int	index;
 
-	if (!lst_elem)
-		return ;
-	ft_printf("List element %d value (int): %d\n", index++,
-		*(int *)(lst_elem->content));
 }

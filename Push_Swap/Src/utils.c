@@ -6,20 +6,13 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 17:52:57 by gamaral           #+#    #+#             */
-/*   Updated: 2023/10/22 21:25:30 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/10/29 17:39:12 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/Push_Swap.h"
 
-static void	array_free(char **args)
-{
-	while (*args)
-		free(*args++);
-	free(args);
-}
-
-static void	handle_error(int argc, char **argv, char *error)
+void	handle_error(int argc, char **argv, char *error)
 {
 	if (argc == 2)
 		array_free(argv);
@@ -34,9 +27,9 @@ static unsigned char	is_num(char *num_str)
 	i = 0;
 	if (num_str[0] == '-')
 		i++;
-	while (num_str)
+	while (num_str[i])
 	{
-		if (!ft_isdigit(num_str[i]))
+		if (ft_isdigit(num_str[i]))
 			return (TRUE);
 		i++;
 	}
@@ -45,12 +38,13 @@ static unsigned char	is_num(char *num_str)
 
 static unsigned char	is_duplicate_arg(char *arg, char **args, int index)
 {
-	while (args)
+	while (args[index])
 	{
 		if (!ft_strcmp(arg, args[index]))
-			return (FALSE);
+			return (TRUE);
+		index++;
 	}
-	return (TRUE);
+	return (FALSE);
 }
 
 void	check_args(int argc, char **argv)
@@ -80,4 +74,22 @@ void	check_args(int argc, char **argv)
 	}
 	if (argc == 2)
 		array_free(args);
+}
+
+int	is_sorted(t_list **stack)
+{
+	t_list	*head;
+	int		value_head;
+	int		value_next;
+
+	head = *stack;
+	while(head && head->next)
+	{
+		value_head = *(int *)(head->content);
+		value_next = *(int *)(head->next->content);
+		if(value_next < value_head)
+			return (FALSE);
+		head = head->next;
+	}
+	return (TRUE);
 }

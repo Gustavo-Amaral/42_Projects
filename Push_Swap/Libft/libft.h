@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 22:17:45 by gamaral           #+#    #+#             */
-/*   Updated: 2023/10/22 20:16:38 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/10/29 16:00:24 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -438,7 +438,8 @@ int		ft_lstsize(t_list *lst);
 /**
  * @brief  Points to the last node of the linked list
  * @note
- * @param  lst: Pointer to the node that is going to point to the last node
+ * @param  lst: Pointer to the first node that is going to be 
+ * iterated upon to point to the last node of the linked list
  * @retval Returns a pointer to the last node of the linked list
  */
 t_list	*ft_lstlast(t_list *lst);
@@ -463,10 +464,10 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 
 /**
- * @brief  Deletes the whole linked list
- * @note
+ * @brief  Deletes the whole linked list, by freeing the elements
+ * @note   In case there is a double pointer, it still needs freeing
  * @param  lst: Pointer to the linked list
- * @param  del: Function in charge to deleteapple  the content of the node
+ * @param  del: Function in charge to delete the content of the node
  * @retval None
  */
 void	ft_lstclear(t_list **lst, void (*del)(void *));
