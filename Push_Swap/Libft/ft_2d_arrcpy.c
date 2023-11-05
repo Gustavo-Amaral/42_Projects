@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:57:57 by gamaral           #+#    #+#             */
-/*   Updated: 2023/10/29 14:50:00 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/11/05 17:16:55 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	**ft_2d_arrcpy(void **array)
 {
 	char	**aux_array;
 	void	**res_array;
-	size_t			y;
+	size_t	y;
 
 	aux_array = (char **)array;
 	y = 0;

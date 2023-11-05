@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 16:00:58 by gamaral           #+#    #+#             */
-/*   Updated: 2023/10/29 17:03:46 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/11/05 17:17:10 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	array_free(char **args)
 	int	i;
 
 	i = 0;
-	while(args[i])
+	while (args[i])
 		free(args[i++]);
 	free(args);
 }

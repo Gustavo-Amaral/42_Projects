@@ -6,13 +6,13 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 17:44:48 by gamaral           #+#    #+#             */
-/*   Updated: 2023/10/29 19:53:23 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/11/05 16:01:32 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/Push_Swap.h"
 
-void	sort_stack(t_list **stack_a, t_list **stack_b)
+/*void	sort_stack(t_list **stack_a, t_list **stack_b)
 {
 
-}
+}*/

@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 17:52:57 by gamaral           #+#    #+#             */
-/*   Updated: 2023/10/29 17:39:12 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/11/05 17:20:10 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,11 @@ int	is_sorted(t_list **stack)
 	int		value_next;
 
 	head = *stack;
-	while(head && head->next)
+	while (head && head->next)
 	{
 		value_head = *(int *)(head->content);
 		value_next = *(int *)(head->next->content);
-		if(value_next < value_head)
+		if (value_next < value_head)
 			return (FALSE);
 		head = head->next;
 	}
