@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 23:20:32 by gamaral           #+#    #+#             */
-/*   Updated: 2023/06/11 23:20:37 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/09/16 21:25:28 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static char	*read_file(int fd, char *buffer)
 	while (!ft_strchr(temp, '\n') && bytes_read > 0)
 	{
 		bytes_read = read(fd, temp, BUFFER_SIZE);
-		if (bytes_read == -1)
+		if (bytes_read <= 0)
 		{
 			free(buffer);
 			free(temp);

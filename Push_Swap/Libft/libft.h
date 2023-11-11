@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 22:17:45 by gamaral           #+#    #+#             */
-/*   Updated: 2023/10/29 16:00:24 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/11/11 19:44:24 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -404,6 +404,7 @@ int		ft_toupper(int c);
 typedef struct s_list
 {
 	void			*content;
+	struct s_list	*prev;
 	struct s_list	*next;
 }	t_list;
 

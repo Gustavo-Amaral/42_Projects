@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_2d_arrcpy.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 22:46:21 by gamaral           #+#    #+#             */
-/*   Updated: 2023/11/11 19:08:15 by gamaral          ###   ########.fr       */
+/*   Created: 2023/10/08 20:57:57 by gamaral           #+#    #+#             */
+/*   Updated: 2023/11/05 17:16:55 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	**ft_2d_arrcpy(void **array)
 {
-	if (lst)
+	char	**aux_array;
+	void	**res_array;
+	size_t	y;
+
+	aux_array = (char **)array;
+	y = 0;
+	while (aux_array[y])
+		y++;
+	res_array = malloc(sizeof(char *) * (y + 1));
+	if (!aux_array)
+		return (NULL);
+	y = 0;
+	while (aux_array[y])
 	{
-		if (*lst)
-			new->next = *lst;
-		else
-			new->next = NULL;
-		*lst = new;
-		new->prev = NULL;
+		res_array[y] = ft_strdup((const char *)aux_array[y]);
+		y++;
 	}
+	res_array[y] = NULL;
+	return (res_array);
 }

@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:24:53 by gamaral           #+#    #+#             */
-/*   Updated: 2023/11/05 17:19:23 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/11/11 19:36:08 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,25 @@
 
 /* FREEING.C */
 
+/**
+ * @brief  Sets elements pointed to by "arg" to NULL
+ * @param  arg: Pointer to the argument.
+ * @retval None
+*/
 void	nulling_elements(void *arg);
+
+/**
+ * @brief  Frees all the list
+ * @param  lst: Pointer to the list to be freed.
+ * @retval None
+*/
 void	lst_free(t_list **lst);
+
+/**
+ * @brief  Frees all the array
+ * @param  args: Pointer to the array to be freed.
+ * @retval None
+*/
 void	array_free(char **args);
 
 /* INSTRUCTIONS_SWAP.C */
@@ -154,12 +171,44 @@ void	rrr(t_list **stack_a, t_list **stack_b);
 
 /* SORTING.C */
 
+/**
+ * @brief  Sorts the stack.
+ * @param  stack_a: Stack to iterate on
+ * @param  stack_b: Stack to iterate on
+ * @retval None
+*/
 void	sort_stack(t_list **stack_a, t_list **stack_b);
 
 /* UTILS.C */
 
+/**
+ * @brief  Handle error situations.
+ * @param  argc: Total number of arguments
+ * @param  argv: Array of arguments
+ * @param  error: Error message
+ * @retval None
+*/
 void	handle_error(int argc, char **argv, char *error);
+
+/**
+ * @brief  Checks if all arguments are in accordance to 
+ * the program requirements.
+ * @param  argc: Total number of arguments
+ * @param  argv: Array of arguments
+ * @retval None
+*/
 void	check_args(int argc, char **argv);
+
+/**
+ * @brief  Checks if the stack is already sorted in 
+ * ascending order.
+ * @param  stack: Stack to be iterated and verified.
+ * @retval None
+*/
 int		is_sorted(t_list **stack);
+
+/* COMANDO PARA COMPILACAO E TESTES */
+
+// cd Libft && make bonus && cd .. && cc -c -Wall -Wextra -Werror Src/freeing.c Src/instructions_* Src/utils.c && cc -Wall -Wextra -Werror *.o main.c -L Libft -l ft -o push_swap && cd Libft && make fclean && cd ..
 
 #endif

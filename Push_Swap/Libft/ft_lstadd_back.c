@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 21:45:44 by gamaral           #+#    #+#             */
-/*   Updated: 2023/05/07 21:59:30 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/11/11 19:04:33 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,13 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		return ;
 	if (!*lst)
 	{
+		new->next = NULL;
+		new->prev = NULL;
 		*lst = new;
 		return ;
 	}
 	aux = ft_lstlast(*lst);
 	aux->next = new;
+	new->next = NULL;
+	new->prev = aux;
 }

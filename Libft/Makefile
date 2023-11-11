@@ -6,7 +6,7 @@
 #    By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/05 21:28:12 by gamaral           #+#    #+#              #
-#    Updated: 2023/06/15 21:06:32 by gamaral          ###   ########.fr        #
+#    Updated: 2023/10/22 18:55:43 by gamaral          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ PART2 = ft_itoa.c ft_strjoin.c ft_split.c ft_striteri.c ft_strmapi.c \
 EXTRA =	ft_putstr.c ft_strcmp.c ft_swap.c ft_decimal_to_hexadecimal.c \
 		ft_putchar.c ft_putnbr.c ft_revstr.c get_next_line.c ft_printf.c \
 		ft_print_char.c ft_print_hex.c ft_print_nbr.c ft_print_ptr.c ft_print_str.c \
-		ft_print_unsigned.c
+		ft_print_unsigned.c ft_lstprintone.c ft_lstprintall.c ft_2d_arrcpy.c \
 
 BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
 		ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
@@ -47,9 +47,11 @@ $(NAME): ${OBJS}
 		ar rcs ${NAME} ${OBJS}
 
 all:	${NAME}
+		make clean
 
 bonus:	${OBJS} ${BONUS_OBJS}
 		ar rcs ${NAME} ${OBJS} ${BONUS_OBJS}
+		make clean
 
 clean:
 		${RM} ${OBJS} ${BONUS_OBJS}

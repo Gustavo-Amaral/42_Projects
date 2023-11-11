@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 22:31:15 by gamaral           #+#    #+#             */
-/*   Updated: 2023/05/06 22:27:46 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/11/11 19:10:44 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ t_list	*ft_lstnew(void *content)
 		return (NULL);
 	aux->content = content;
 	aux->next = NULL;
+	aux->prev = NULL;
 	return (aux);
 }

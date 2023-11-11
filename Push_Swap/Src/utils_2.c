@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   utils_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 22:46:21 by gamaral           #+#    #+#             */
-/*   Updated: 2023/11/11 19:08:15 by gamaral          ###   ########.fr       */
+/*   Created: 2023/11/11 19:44:52 by gamaral           #+#    #+#             */
+/*   Updated: 2023/11/11 19:51:13 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../Includes/Push_Swap.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+int	find_index(t_list **stack, int value)
 {
-	if (lst)
+	int		i;
+	t_list	*aux;
+
+	i = 0;
+	aux = *stack;
+	while (*(int *)aux->content != value)
 	{
-		if (*lst)
-			new->next = *lst;
-		else
-			new->next = NULL;
-		*lst = new;
-		new->prev = NULL;
+		aux = aux->next;
+		i++;
 	}
+	
+	return (i);
 }
