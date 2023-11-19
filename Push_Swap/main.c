@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 17:02:34 by gamaral           #+#    #+#             */
-/*   Updated: 2023/11/11 19:31:02 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/11/19 16:13:08 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	init_stack(t_list **stack, int argc, char **argv)
 	{
 		aux = malloc(sizeof(int *));
 		*aux = ft_atoi(args[i]);
-		new = ft_lstnew(aux);
+		new = ft_lstnew(aux, i);
 		ft_lstadd_back(stack, new);
 		i++;
 	}
@@ -52,8 +52,8 @@ int	main(int argc, char **argv)
 	*stack_a = NULL;
 	*stack_b = NULL;
 	init_stack(stack_a, argc, argv);
-	ft_printf("listing all arguments:\n");
-	ft_lstprintall(*stack_a);
+	// ft_printf("listing all arguments:\n");
+	// ft_lstprintall(*stack_a);
 	if (is_sorted(stack_a))
 	{
 		lst_free(stack_a);

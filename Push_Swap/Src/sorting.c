@@ -6,69 +6,116 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 17:44:48 by gamaral           #+#    #+#             */
-/*   Updated: 2023/11/11 19:31:07 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/11/19 23:03:18 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/Push_Swap.h"
 
-static int	get_max_value(t_list **stack)
+void	sort_three_elements(t_list **stack_a)
 {
-	t_list	*head;
-	int		max;
-
-	head = *stack;
-	max = *(int *)head->content;
-	while (head)
+	if (get_min_value(*stack_a) == *(int *)(*stack_a)->content)
 	{
-		if (*(int *)head->content > max)
-			max = *(int *)head->content;
-		head = head->next;
+		rra(stack_a);
+		sa(stack_a);
 	}
-	return (max);
+	else if (get_max_value(stack_a) == *(int *)(*stack_a)->content)
+	{
+		ra(stack_a);
+		if (!is_sorted(stack_a))
+			sa(stack_a);
+	}
+	else
+	{
+		if (ft_lst_find_index(*stack_a, get_max_value(*stack_a)) == 1)
+			rra(stack_a);
+		else
+			sa(stack_a);
+	}
 }
 
-static int	get_min_value(t_list **stack)
+void	sort_b_to_three(t_list **stack_a, t_list **stack_b)
 {
-	t_list	*head;
-	int		min;
+	int		i;
+	t_list	*aux;
 
-	head = *stack;
-	min = *(int *)head->content;
-	while (head)
+	while (ft_lstsize(*stack_a) > 3 && !is_sorted(stack_a))
 	{
-		if (*(int *)head->content < min)
-			min = *(int *)head->content;
-		head = head->next;
+		aux = *stack_a;
+		i = rotate_needs_a_to_b(*stack_a, *stack_b);
+		while (i >= 0)
+		{
+			if (i == ft_case_rarb(*stack_a, *stack_b, *(int *)aux->content))
+				i = ft_apply_rarb(*stack_a, *stack_b, *(int *)aux->content);
+			else if (i == ft_case_rrarrb(*stack_a, *stack_b, *(int *)aux->content))
+				i = ft_apply_rrarrb(*stack_a, *stack_b, *(int *)aux->content);
+			else if (i == ft_case_rarrb(*stack_a, *stack_b, *(int *)aux->content))
+				i = ft_apply_rarrb(*stack_a, *stack_b, *(int *)aux->content);
+			else if (i == ft_case_rrarb(*stack_a, *stack_b, *(int *)aux->content))
+				i = ft_apply_rrarb(*stack_a, *stack_b, *(int *)aux->content);
+			else
+				aux = aux->next;
+		}
 	}
-	return (min);
+}
+
+void	sort_b(t_list **stack_a, t_list **stack_b)
+{
+	if (ft_lstsize(*stack_a) > 3 && !is_sorted(*stack_a))
+		pb(stack_b, stack_a);
+	if (ft_lstsize(*stack_a) > 3 && !is_sorted(*stack_a))
+		pb(stack_b, stack_a);
+	if (ft_lstsize(*stack_a) > 3 && !is_sorted(*stack_a))
+		sort_b_to_three(stack_a, &stack_b);
+	if (!is_sorted(*stack_a))
+		sort_three_elements(stack_a);
+}
+
+void	sort_a(t_list **stack_a, t_list **stack_b)
+{
+	int		index;
+	t_list	*aux;
+
+	while (*stack_b)
+	{
+		aux = *stack_b;
+		index = rotate_needs_b_to_a(*stack_a, *stack_b);
+		while (index >= 0)
+		{
+			if (index == ft_case_rarb_a(*stack_a, *stack_b, *(int *)aux->content))
+				index = apply_ra_rb(stack_a, stack_b, *(int *)aux->content, 'b');
+			else if (index == ft_case_rarrb_a(*stack_a, *stack_b, *(int *)aux->content))
+				index = apply_ra_rrb(stack_a, stack_b, *(int *)aux->content, 'b');
+			else if (index == ft_case_rrarrb_a(*stack_a, *stack_b, *(int *)aux->content))
+				index = apply_rra_rrb(stack_a, stack_b, *(int *)aux->content, 'b');
+			else if (index == ft_case_rrarb_a(*stack_a, *stack_b, *(int *)aux->content))
+				index = apply_rra_rb(stack_a, stack_b, *(int *)aux->content, 'b');
+			else
+				aux = aux->next;
+		}
+	}
 }
 
 void	sort_stack(t_list **stack_a, t_list **stack_b)
 {
-	t_list	*head_a;
-	int		max;
-	int		min;
-	int		size;
+	int	index;
 
-	head_a = *stack_a;
-	size = ft_lstsize(head_a);
-	max = get_max_value(stack_a);
-	min = get_min_value(stack_a);
-	while (ft_lstsize(*stack_a) < size && !is_sorted(stack_a))
+	if (ft_lstsize(*stack_a) == 2)
+		sa(stack_a);
+	else
 	{
-		if (ft_lstsize(*stack_a) > 3)
+		sort_b(stack_a, stack_b);
+		sort_a(stack_a, stack_b);
+		index = ft_lst_find_index(*stack_a, get_min_value(stack_a));
+		if (index < ft_lstsize(*stack_a) - index)
 		{
-			pb(stack_b, stack_a);
-			if (!is_sorted(stack_b))
-			{
-				if (ft_lstsize(*stack_b) == 2)
-					sb(stack_b);
-				else
-				{
-					
-				}
-			}
+			while (*(int *)(*stack_a)->content != get_min_value(stack_a));
+				ra(stack_a);
+		}
+		else
+		{
+			while (*(int *)(*stack_a)->content != get_min_value(stack_a));
+				rra(stack_a);
 		}
 	}
 }

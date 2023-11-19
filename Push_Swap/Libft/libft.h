@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 22:17:45 by gamaral           #+#    #+#             */
-/*   Updated: 2023/11/11 19:44:24 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/11/19 14:19:09 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -403,6 +403,7 @@ int		ft_toupper(int c);
  */
 typedef struct s_list
 {
+	int				index;
 	void			*content;
 	struct s_list	*prev;
 	struct s_list	*next;
@@ -414,7 +415,7 @@ typedef struct s_list
  * @param  content: Pointer to the content of the node
  * @retval Returns a pointer to the newly created node
  */
-t_list	*ft_lstnew(void *content);
+t_list	*ft_lstnew(void *content, int index);
 
 /**
  * @brief  Adds a new node to the beggining of the linked list
@@ -502,6 +503,14 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 /************** EXTRA FUNCTIONS **************/
 
 void	decimal_to_hexadecimal(int decimal_number, char *hexadecimal_string);
+
+/**
+ * @brief  Finds the element index in the current list
+ * @param list_head: List head (first element of the list)
+ * @param value: Content value to search for in the list
+ * @retval Index of the element (list position)
+*/
+int		ft_lst_find_index(t_list *list_head, int value);
 
 /**
  * @brief  Prints all the list elements values (int type)

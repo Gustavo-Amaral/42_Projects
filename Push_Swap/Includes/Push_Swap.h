@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:24:53 by gamaral           #+#    #+#             */
-/*   Updated: 2023/11/11 19:36:08 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/11/19 23:06:07 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,53 @@ void	lst_free(t_list **lst);
  * @retval None
 */
 void	array_free(char **args);
+
+/* INSTRUCTIONS_OPERATE.C */
+
+/**
+ * @brief  Rotates both stack A and stack B 
+ * in the same direction by the required amount.
+ * @param  stack_a:   Stack A to iterate on.
+ * @param  stack_b:   Stack B to iterate on.
+ * @param  value:     Element value going to be operated.
+ * @param  stack_sel: Char used to select which stack to operate on.
+ * @retval -1
+*/
+int	apply_ra_rb(t_list **stack_a, t_list **stack_b, int value, char stack_sel);
+
+/**
+ * @brief  Reverse rotates both stack A and stack B 
+ * in the same direction by the required amount.
+ * @param  stack_a:   Stack A to iterate on.
+ * @param  stack_b:   Stack B to iterate on.
+ * @param  value:     Element value going to be operated.
+ * @param  stack_sel: Char used to select which stack to operate on.
+ * @retval -1
+*/
+int	apply_rra_rrb(t_list **stack_a, t_list **stack_b, int value, char stack_sel);
+
+/**
+ * @brief  Reverse rotates stack A and rotates stack B 
+ * by the required amount.
+ * @param  stack_a:   Stack A to iterate on.
+ * @param  stack_b:   Stack B to iterate on.
+ * @param  value:     Element value going to be operated.
+ * @param  stack_sel: Char used to select which stack to operate on.
+ * @retval -1
+*/
+int	apply_rra_rb(t_list **stack_a, t_list **stack_b, int value, char stack_sel);
+
+/**
+ * @brief  Rotates stack A and reverse rotate stack B 
+ * by the required amount.
+ * @param  stack_a:   Stack A to iterate on.
+ * @param  stack_b:   Stack B to iterate on.
+ * @param  value:     Element value going to be operated.
+ * @param  stack_sel: Char used to select which stack to operate on.
+ * @retval -1
+*/
+int	apply_ra_rrb(t_list **stack_a, t_list **stack_b, int value, char stack_sel);
+
 
 /* INSTRUCTIONS_SWAP.C */
 
@@ -172,9 +219,40 @@ void	rrr(t_list **stack_a, t_list **stack_b);
 /* SORTING.C */
 
 /**
+ * @brief  Sorts the stack when it has three elements.
+ * @param  stack_a: Stack to sort.
+ * @retval None
+*/
+void	sort_three_elements(t_list **stack_a);
+
+/**
+ * @brief  Sorts B stack up to three elements.
+ * @param  stack_a: Stacks to iterate on.
+ * @param  stack_b: Stacks to iterate on.
+ * @retval None
+*/
+void	sort_b_to_three(t_list **stack_a, t_list **stack_b);
+
+/**
+ * @brief  Sorts B stack.
+ * @param  stack_a: Stacks to iterate on.
+ * @param  stack_b: Stacks to iterate on.
+ * @retval None
+*/
+void	sort_b(t_list **stack_a, t_list **stack_b);
+
+/**
+ * @brief  Sorts A stack up.
+ * @param  stack_a: Stacks to iterate on.
+ * @param  stack_b: Stacks to iterate on.
+ * @retval None
+*/
+void	sort_a(t_list **stack_a, t_list **stack_b);
+
+/**
  * @brief  Sorts the stack.
- * @param  stack_a: Stack to iterate on
- * @param  stack_b: Stack to iterate on
+ * @param  stack_a: Stack to iterate on.
+ * @param  stack_b: Stack to iterate on.
  * @retval None
 */
 void	sort_stack(t_list **stack_a, t_list **stack_b);
@@ -206,6 +284,181 @@ void	check_args(int argc, char **argv);
  * @retval None
 */
 int		is_sorted(t_list **stack);
+
+/* UTILS_2.C */
+
+/**
+ * @brief  Finds the max value from all elements within
+ * the list.
+ * @param  stack: Stack to be iterated and verified.
+ * @retval Max int value within the list
+*/
+int	get_max_value(t_list **stack);
+
+/**
+ * @brief  Finds the min value from all elements within
+ * the list.
+ * @param  stack: Stack to be iterated and verified.
+ * @retval Min int value within the list
+*/
+int	get_min_value(t_list **stack);
+
+/**
+ * @brief  Finds the correct index to place the value in stack B.
+ * @note   It checks what index number push_value will get 
+ * after being pushed to stack B.
+ * @param  head_b: Element on top of the stack B.
+ * @param  push_value: Element int value.
+ * @retval Returns the correct index in which push_value should 
+ * be placed.
+*/
+int	find_place_in_b(t_list *head_b, int push_value);
+
+/**
+ * @brief  Finds the correct index to place the value in stack A.
+ * @note   It checks what index number push_value will get 
+ * after being pushed to stack A.
+ * @param  head_a: Element on top of the stack A.
+ * @param  push_value: Element int value.
+ * @retval Returns the correct index in which push_value should 
+ * be placed.
+*/
+int	find_place_in_a(t_list *head_a, int push_value);
+
+/* ROTATION_CALCULUS_A.C */
+
+/**
+ * @brief  Calculates how many times we should 
+ * rotate the stacks together (ra + rb case).
+ * @note   The logic on stack A is: the higher value
+ * element should be at bottom, pushing the cheapest 
+ * cost element to stack B, in order to be sorted.
+ * @param  head_a: Element on top of the stack A.
+ * @param  head_b: Element on top of the stack B.
+ * @retval The least number of operations needed 
+ * in order to put the next element available to push.
+*/
+int	ft_case_rarb_a(t_list *head_a, t_list *head_b, int value);
+
+/**
+ * @brief  Calculates how many times we should 
+ * rotate the stacks together (rra + rrb case).
+ * @note   The logic on stack A is: the higher value
+ * element should be at bottom, pushing the cheapest 
+ * cost element to stack B, in order to be sorted.
+ * @param  head_a: Element on top of the stack A.
+ * @param  head_b: Element on top of the stack B.
+ * @retval The least number of operations needed 
+ * in order to put the next element available to push.
+*/
+int	ft_case_rrarrb_a(t_list *head_a, t_list *head_b, int value);
+
+/**
+ * @brief  Calculates how many times we should 
+ * rotate the stacks together (ra + rrb case).
+ * @note   The logic on stack A is: the higher value
+ * element should be at bottom, pushing the cheapest 
+ * cost element to stack B, in order to be sorted.
+ * @param  head_a: Element on top of the stack A.
+ * @param  head_b: Element on top of the stack B.
+ * @retval The least number of operations needed 
+ * in order to put the next element available to push.
+*/
+int	ft_case_rarrb_a(t_list *head_a, t_list *head_b, int value);
+
+/**
+ * @brief  Calculates how many times we should 
+ * rotate the stacks together (rra + rb case).
+ * @note   The logic on stack A is: the higher value
+ * element should be at bottom, pushing the cheapest 
+ * cost element to stack B, in order to be sorted.
+ * @param  head_a: Element on top of the stack A.
+ * @param  head_b: Element on top of the stack B.
+ * @retval The least number of operations needed 
+ * in order to put the next element available to push.
+*/
+int	ft_case_rrarb_a(t_list *head_a, t_list *head_b, int value);
+
+/* ROTATION_CALCULUS_B.C */
+
+/**
+ * @brief  Calculates how many times we should 
+ * rotate the stacks together (ra + rb case).
+ * @note   The logic on stack B is: the higher value
+ * element should be on top, since when pushed back to A,
+ * it will be on the bottom.
+ * @param  head_a: Element on top of the stack A.
+ * @param  head_b: Element on top of the stack B.
+ * @retval The least number of operations needed 
+ * in order to put the next element available to push.
+*/
+int	ft_case_rarb(t_list *head_a, t_list *head_b, int value);
+
+/**
+ * @brief  Calculates how many times we should 
+ * rotate the stacks together (rra + rrb case).
+ * @note   The logic on stack B is: the higher value
+ * element should be on top, since when pushed back to A,
+ * it will be on the bottom.
+ * @note   Since here we have reverse rotate,rather than index number, 
+ * we check reverse index number which is calculated by 
+ * list_size - index_number.
+ * @param  head_a: Element on top of the stack A.
+ * @param  head_b: Element on top of the stack B.
+ * @retval The least number of operations needed 
+ * in order to put the next element available to push.
+*/
+int	ft_case_rrarrb(t_list *head_a, t_list *head_b, int value);
+
+/**
+ * @brief  Calculates how many times we should 
+ * rotate the stacks together (rra + rb case).
+ * @note   The logic on stack B is: the higher value
+ * element should be on top, since when pushed back to A,
+ * it will be on the bottom.
+ * @param  head_a: Element on top of the stack A.
+ * @param  head_b: Element on top of the stack B.
+ * @retval The least number of operations needed 
+ * in order to put the next element available to push.
+*/
+int	ft_case_rrarb(t_list *head_a, t_list *head_b, int value);
+
+/**
+ * @brief  Calculates how many times we should 
+ * rotate the stacks together (ra + rrb case).
+ * @note   The logic on stack B is: the higher value
+ * element should be on top, since when pushed back to A,
+ * it will be on the bottom.
+ * @param  head_a: Element on top of the stack A.
+ * @param  head_b: Element on top of the stack B.
+ * @retval The least number of operations needed 
+ * in order to put the next element available to push.
+*/
+int	ft_case_rarrb(t_list *head_a, t_list *head_b, int value);
+
+/* ROTATION_NEEDS */
+
+/**
+ * @brief  Calculates and decides which rotation 
+ * combination is the best to use, least operation cost
+ * to sort the stack. Function is used during push from A to B.
+ * @param  head_a: Element on top of the stack A.
+ * @param  head_b: Element on top of the stack B.
+ * @retval The least number of operations needed 
+ * in order to put the next element available to push.
+*/
+int	rotate_needs_a_to_b(t_list *head_a, t_list *head_b);
+
+/**
+ * @brief  Calculates and decides which rotation 
+ * combination is the best to use, least operation cost
+ * to sort the stack. Function is used during push from B to A.
+ * @param  head_a: Element on top of the stack A.
+ * @param  head_b: Element on top of the stack B.
+ * @retval The least number of operations needed 
+ * in order to put the next element available to push.
+*/
+int	rotate_needs_b_to_a(t_list *head_a, t_list *head_b);
 
 /* COMANDO PARA COMPILACAO E TESTES */
 
