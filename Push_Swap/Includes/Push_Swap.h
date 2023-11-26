@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 21:24:53 by gamaral           #+#    #+#             */
-/*   Updated: 2023/11/19 23:06:07 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/11/26 15:46:36 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,7 +234,9 @@ void	sort_three_elements(t_list **stack_a);
 void	sort_b_to_three(t_list **stack_a, t_list **stack_b);
 
 /**
- * @brief  Sorts B stack.
+ * @brief  Pushes all elements from Stack A to Stack B, until
+ * Stack A has only three elements left; sorts the remaining 
+ * three elements of A and also sorts B stack.
  * @param  stack_a: Stacks to iterate on.
  * @param  stack_b: Stacks to iterate on.
  * @retval None
@@ -242,7 +244,8 @@ void	sort_b_to_three(t_list **stack_a, t_list **stack_b);
 void	sort_b(t_list **stack_a, t_list **stack_b);
 
 /**
- * @brief  Sorts A stack up.
+ * @brief  Pushes back elements from Stack B to Stack A
+ * and finishes sorting stack A with a few operations left.
  * @param  stack_a: Stacks to iterate on.
  * @param  stack_b: Stacks to iterate on.
  * @retval None
@@ -250,7 +253,7 @@ void	sort_b(t_list **stack_a, t_list **stack_b);
 void	sort_a(t_list **stack_a, t_list **stack_b);
 
 /**
- * @brief  Sorts the stack.
+ * @brief  Sorts the stack, making all operations needed.
  * @param  stack_a: Stack to iterate on.
  * @param  stack_b: Stack to iterate on.
  * @retval None
@@ -286,6 +289,14 @@ void	check_args(int argc, char **argv);
 int		is_sorted(t_list **stack);
 
 /* UTILS_2.C */
+
+/**
+ * @brief  Finds the element index in the current list
+ * @param list_head: List head (first element of the list)
+ * @param value: Content value to search for in the list
+ * @retval Index of the element (list position)
+*/
+int	ft_lst_find_index_ps(t_list *list_head, int value);
 
 /**
  * @brief  Finds the max value from all elements within
@@ -462,6 +473,6 @@ int	rotate_needs_b_to_a(t_list *head_a, t_list *head_b);
 
 /* COMANDO PARA COMPILACAO E TESTES */
 
-// cd Libft && make bonus && cd .. && cc -c -Wall -Wextra -Werror Src/freeing.c Src/instructions_* Src/utils.c && cc -Wall -Wextra -Werror *.o main.c -L Libft -l ft -o push_swap && cd Libft && make fclean && cd ..
+// cd Libft && make bonus && cd .. && cc -c -Wall -Wextra -Werror Src/* && cc -Wall -Wextra -Werror *.o main.c -L Libft -l ft -o push_swap && cd Libft && make fclean && cd ..
 
 #endif

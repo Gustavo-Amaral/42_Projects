@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 21:31:28 by gamaral           #+#    #+#             */
-/*   Updated: 2023/11/19 21:50:34 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/11/26 13:59:45 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	rotate_needs_a_to_b(t_list *head_a, t_list *head_b)
 			cost = ft_case_rrarb(head_a, head_b, *(int *)aux->content);
 		aux = aux->next;
 	}
+	return (cost);
 }
 
 int	rotate_needs_b_to_a(t_list *head_a, t_list *head_b)
@@ -52,4 +53,5 @@ int	rotate_needs_b_to_a(t_list *head_a, t_list *head_b)
 			cost = ft_case_rrarb_a(head_a, head_b, *(int *)aux->content);
 		aux = aux->next;
 	}
+	return (cost);
 }

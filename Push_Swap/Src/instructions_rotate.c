@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 17:11:34 by gamaral           #+#    #+#             */
-/*   Updated: 2023/11/05 20:06:51 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/11/26 14:59:19 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	rr(t_list **stack_a, t_list **stack_b)
 	if (!stack_a || ft_lstsize(*stack_a) < 2 || 
 		!stack_b || ft_lstsize(*stack_b) < 2)
 		return ;
-	ra(stack_a);
-	rb(stack_b);
+	rotate(stack_a);
+	rotate(stack_b);
 	ft_putendl_fd("rr", 1);
 }

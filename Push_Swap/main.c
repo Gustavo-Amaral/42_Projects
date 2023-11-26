@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 17:02:34 by gamaral           #+#    #+#             */
-/*   Updated: 2023/11/19 16:13:08 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/11/26 15:24:15 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,43 +52,12 @@ int	main(int argc, char **argv)
 	*stack_a = NULL;
 	*stack_b = NULL;
 	init_stack(stack_a, argc, argv);
-	// ft_printf("listing all arguments:\n");
-	// ft_lstprintall(*stack_a);
 	if (is_sorted(stack_a))
 	{
 		lst_free(stack_a);
 		lst_free(stack_b);
 		return (0);
 	}
-	// ft_printf("listing swaped stack A:\n");
-	// sa(stack_a);
-	// ft_lstprintall(*stack_a);
-	// ft_printf("listing pushed stack B:\n");
-	// pb(stack_b, stack_a);
-	// pb(stack_b, stack_a);
-	// pb(stack_b, stack_a);
-	// pb(stack_b, stack_a);
-	// pb(stack_b, stack_a);
-	// ft_lstprintall(*stack_b);
-	// ft_printf("listing swaped stack B:\n");
-	// sb(stack_b);
-	// ft_lstprintall(*stack_b);
-	// ft_printf("listing pushed stack A:\n");
-	// pa(stack_a, stack_b);
-	// pa(stack_a, stack_b);
-	// ft_lstprintall(*stack_a);
-	// ft_printf("listing rotated stack A and stack B:\n");
-	// rr(stack_a, stack_b);
-	// ft_printf("stack A:\n");
-	// ft_lstprintall(*stack_a);
-	// ft_printf("stack B:\n");
-	// ft_lstprintall(*stack_b);
-	// ft_printf("listing reversed rotated stack A and stack B:\n");
-	// rrr(stack_a, stack_b);
-	// ft_printf("stack A:\n");
-	// ft_lstprintall(*stack_a);
-	// ft_printf("stack B:\n");
-	// ft_lstprintall(*stack_b);
 	sort_stack(stack_a, stack_b);
 	lst_free(stack_a);
 	lst_free(stack_b);

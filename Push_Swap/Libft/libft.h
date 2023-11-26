@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 22:17:45 by gamaral           #+#    #+#             */
-/*   Updated: 2023/11/19 14:19:09 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/11/26 15:44:38 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
  * @param  nptr: "Value" to be converted
  * @retval Converted value
  */
-int		ft_atoi(const char *nptr);
+long	ft_atoi(const char *nptr);
 
 /**
  * @brief  Sets all indicated memory slots to 0

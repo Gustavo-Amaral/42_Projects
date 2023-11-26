@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 22:57:36 by gamaral           #+#    #+#             */
-/*   Updated: 2023/09/03 17:49:48 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/11/26 15:44:22 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	check_sign(const char *str, int i, int *is_neg)
 	return (i);
 }
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	int			i;
 	int			is_neg;
