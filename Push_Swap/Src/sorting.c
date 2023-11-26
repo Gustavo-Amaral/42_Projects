@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 17:44:48 by gamaral           #+#    #+#             */
-/*   Updated: 2023/11/26 14:14:19 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/11/26 19:16:22 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,21 @@ void	sort_three_elements(t_list **stack_a)
 {
 	if (get_min_value(stack_a) == *(int *)(*stack_a)->content)
 	{
-		rra(stack_a);
-		sa(stack_a);
+		rra(stack_a, TRUE);
+		sa(stack_a, TRUE);
 	}
 	else if (get_max_value(stack_a) == *(int *)(*stack_a)->content)
 	{
-		ra(stack_a);
+		ra(stack_a, TRUE);
 		if (!is_sorted(stack_a))
-			sa(stack_a);
+			sa(stack_a, TRUE);
 	}
 	else
 	{
 		if (ft_lst_find_index_ps(*stack_a, get_max_value(stack_a)) == 1)
-			rra(stack_a);
+			rra(stack_a, TRUE);
 		else
-			sa(stack_a);
+			sa(stack_a, TRUE);
 	}
 }
 
@@ -62,9 +62,9 @@ void	sort_b_to_three(t_list **stack_a, t_list **stack_b)
 void	sort_b(t_list **stack_a, t_list **stack_b)
 {
 	if (ft_lstsize(*stack_a) > 3 && !is_sorted(stack_a))
-		pb(stack_b, stack_a);
+		pb(stack_b, stack_a, TRUE);
 	if (ft_lstsize(*stack_a) > 3 && !is_sorted(stack_a))
-		pb(stack_b, stack_a);
+		pb(stack_b, stack_a, TRUE);
 	if (ft_lstsize(*stack_a) > 3 && !is_sorted(stack_a))
 		sort_b_to_three(stack_a, stack_b);
 	if (!is_sorted(stack_a))
@@ -101,7 +101,7 @@ void	sort_stack(t_list **stack_a, t_list **stack_b)
 	int	index;
 
 	if (ft_lstsize(*stack_a) == 2)
-		sa(stack_a);
+		sa(stack_a, TRUE);
 	else
 	{
 		sort_b(stack_a, stack_b);
@@ -110,12 +110,12 @@ void	sort_stack(t_list **stack_a, t_list **stack_b)
 		if (index < ft_lstsize(*stack_a) - index)
 		{
 			while (*(int *)(*stack_a)->content != get_min_value(stack_a))
-				ra(stack_a);
+				ra(stack_a, TRUE);
 		}
 		else
 		{
 			while (*(int *)(*stack_a)->content != get_min_value(stack_a))
-				rra(stack_a);
+				rra(stack_a, TRUE);
 		}
 	}
 }

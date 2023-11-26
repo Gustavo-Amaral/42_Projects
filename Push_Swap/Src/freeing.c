@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 16:00:58 by gamaral           #+#    #+#             */
-/*   Updated: 2023/11/05 17:17:10 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/11/26 20:31:08 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	lst_free(t_list **lst)
 {
 	ft_lstclear(lst, nulling_elements);
 	free(lst);
+	lst = NULL;
 }
 
 void	array_free(char **args)

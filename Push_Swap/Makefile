@@ -6,14 +6,14 @@
 #    By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/22 16:42:46 by gamaral           #+#    #+#              #
-#    Updated: 2023/10/22 17:57:44 by gamaral          ###   ########.fr        #
+#    Updated: 2023/11/26 20:21:46 by gamaral          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Standard
 
 NAME := push_swap
-NAME_BONUS := $(addsuffix _bonus, $(NAME))
+NAME_BONUS := checker
 CC := cc 
 CFLAGS := -Wall -Wextra -Werror -g
 RM = rm -rf
@@ -28,19 +28,21 @@ endif
 
 #Sources
 
-SRC = main.c ${wildcard Src/*.c}
+MAIN = main.c
+SRC = ${wildcard Src/*.c}
 SRC_BONUS = ${wildcard Bonus/*.c}
 
 #Objects
 
+MAIN_OBJ = ${MAIN:.c=.o}
 OBJS = ${SRC:.c=.o}
 OBJS_BONUS = ${SRC_BONUS:.c=.o}
 
 all: ${NAME}
 
-$(NAME): $(OBJS) $(Libft)
+$(NAME): $(MAIN_OBJ) $(OBJS) $(Libft)
 	${MAKE} -C ${LIBFTPATH} bonus
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS) $(MAIN) -o $(NAME) $(LIBFT)
 	${RM} ${OBJS}
 	${MAKE} -C ${LIBFTPATH} fclean
 
@@ -49,17 +51,17 @@ Libft:
 
 bonus: $(OBJS) $(OBJS_BONUS) $(Libft)
 	${MAKE} -C ${LIBFTPATH} bonus
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS_BONUS) -o $(NAME_BONUS) $(LIBFT)
-	${RM} ${OBJS} ${OBJS_BONUS}
+	$(CC) $(CFLAGS) $(OBJS) $(MAIN) -o $(NAME) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS) $(OBJS_BONUS) -o $(NAME_BONUS) $(LIBFT)
+	${RM} $(MAIN_OBJ) ${OBJS} ${OBJS_BONUS}
 	${MAKE} -C ${LIBFTPATH} fclean
 
 clean:
-	${RM} ${OBJS} ${NAME}
+	${RM} $(MAIN_OBJ) ${OBJS} ${NAME}
 	${MAKE} -C ${LIBFTPATH} clean 
 
 fclean:
-	${RM} ${OBJS} ${NAME} ${NAME_BONUS}
+	${RM} $(MAIN_OBJ) ${OBJS} ${NAME} ${NAME_BONUS}
 	${MAKE} -C ${LIBFTPATH} fclean
 
 re: fclean all

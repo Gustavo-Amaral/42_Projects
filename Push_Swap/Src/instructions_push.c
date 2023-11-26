@@ -6,7 +6,7 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 17:10:51 by gamaral           #+#    #+#             */
-/*   Updated: 2023/11/26 14:19:25 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/11/26 19:08:12 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,16 @@ static void	push(t_list **stack_to, t_list **stack_from)
 	ft_lstadd_front(stack_to, aux);
 }
 
-void	pa(t_list **stack_a, t_list **stack_b)
+void	pa(t_list **stack_a, t_list **stack_b, unsigned int print)
 {
 	push(stack_a, stack_b);
-	ft_putendl_fd("pa", 1);
+	if (print)
+		ft_putendl_fd("pa", 1);
 }
 
-void	pb(t_list **stack_b, t_list **stack_a)
+void	pb(t_list **stack_b, t_list **stack_a, unsigned int print)
 {
 	push(stack_b, stack_a);
-	ft_putendl_fd("pb", 1);
+	if (print)
+		ft_putendl_fd("pb", 1);
 }
