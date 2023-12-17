@@ -6,18 +6,16 @@
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 20:05:22 by gamaral           #+#    #+#             */
-/*   Updated: 2023/12/17 19:45:35 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/12/17 19:28:15 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Includes/Pipex.h"
+#include "Includes/Minishell.h"
 
 static void initialize_cmds(t_cmds *commands)
 {
     commands->cmd1 = NULL;
     commands->cmd2 = NULL;
-    commands->file1 = NULL;
-    commands->file2 = NULL;
 }
 
 int	main(int argc, char **argv)

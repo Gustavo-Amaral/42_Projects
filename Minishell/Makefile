@@ -6,13 +6,13 @@
 #    By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/03 20:44:18 by gamaral           #+#    #+#              #
-#    Updated: 2023/12/17 19:32:52 by gamaral          ###   ########.fr        #
+#    Updated: 2023/12/17 19:28:03 by gamaral          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Standard
 
-NAME := pipex
+NAME := minishell
 #NAME_BONUS := 
 CC := cc 
 CFLAGS := -Wall -Wextra -Werror -g

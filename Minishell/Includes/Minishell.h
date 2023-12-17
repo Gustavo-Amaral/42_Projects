@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Pipex.h                                            :+:      :+:    :+:   */
+/*   Minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 20:05:43 by gamaral           #+#    #+#             */
-/*   Updated: 2023/12/17 20:38:35 by gamaral          ###   ########.fr       */
+/*   Updated: 2023/12/17 19:29:00 by gamaral          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#ifndef MINISHELL_H
+# define MINISHELL_H
 
 # include <stdio.h> 
 # include <unistd.h> 
@@ -19,37 +19,11 @@
 //# include <process.h>
 # include "../Libft/libft.h"
 
-/* BOOLEAN DEFINITIONS */
-
-# define FALSE          0
-# define TRUE           1
-
-/* STD DEFINITIONS */
-
-# define STDIN_FILENO	0
-# define STDOUT_FILENO	1
-# define STDERR_FILENO	2
-
-/* ERROR STRINGS DEFINITIONS */
-
-# define	INCORRECT_ARGUMENTS	"Incorrect arguments structure\n"
-
 typedef struct s_cmds
 {
-	char *file1;
-	char *file2;
 	char *cmd1;
 	char *cmd2;
 } t_cmds;
-
-/* ERROR.C */
-
-/**
- * @brief This function handle errors in case they happen and exit the program.
- * @param string: String to be printed as an error message.
- * @retval None.
-*/
-void	handle_errors(char *string);
 
 /* FREEING.C */
 
