@@ -3,20 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   Pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gustavo <gustavo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 20:05:43 by gamaral           #+#    #+#             */
-/*   Updated: 2023/12/17 20:38:35 by gamaral          ###   ########.fr       */
+/*   Updated: 2024/08/16 23:26:17 by gustavo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
 
-# include <stdio.h> 
-# include <unistd.h> 
-# include <fcntl.h> 
+# include <stdio.h>
+# include <unistd.h>
+# include <fcntl.h>
 //# include <process.h>
+//# include <stdlib.h>
+//# include <sys/types.h>
+# include <sys/wait.h>
 # include "../Libft/libft.h"
 
 /* BOOLEAN DEFINITIONS */
@@ -30,17 +33,26 @@
 # define STDOUT_FILENO	1
 # define STDERR_FILENO	2
 
+/* USEFUL STRINGS FOR GENERAL USE */
+
+# define	ARGUMENT_STRUCTURE		"Incorrect arguments structure\n"
+# define	COMMAND_NOT_FOUND		"Pipex: command not found: "
+
 /* ERROR STRINGS DEFINITIONS */
 
-# define	INCORRECT_ARGUMENTS	"Incorrect arguments structure\n"
+# define	INCORRECT_ARGUMENTS		"Args: ./pipex <file1> <cmd1> <cmd2> <file2>\n"
+# define	PIPE_ERROR 				"There was a pipe function error\n"
+# define	FORK_ERROR				"There was a fork process error\n"
+# define	CLD_OPEN_FILE_ERROR		"Failed to open file in child process\n"
+# define	PRNT_OPEN_FILE_ERROR	"Failed to open file in parent process\n"
 
-typedef struct s_cmds
-{
-	char *file1;
-	char *file2;
-	char *cmd1;
-	char *cmd2;
-} t_cmds;
+// typedef struct s_cmds
+// {
+// 	char *file1;
+// 	char *file2;
+// 	char *cmd1;
+// 	char *cmd2;
+// } t_cmds;
 
 /* ERROR.C */
 
@@ -54,12 +66,12 @@ void	handle_errors(char *string);
 /* FREEING.C */
 
 /**
- * @brief This function frees the memory allocated for command structure and 
+ * @brief This function frees the memory allocated for command structure and
  * its members.
  * @param commands: Command structure to be freed.
  * @retval None.
 */
-void	free_cmd_struct(t_cmds *commands);
+//void	free_cmd_struct(t_cmds *commands);
 
 /**
  * @brief This function frees the memory allocated for commands strings array
@@ -83,6 +95,10 @@ void	free_array(char **array);
  * including program's name.
  * @retval None.
 */
-void proccess_args(int argc, char **argv, t_cmds *commands);
+//void proccess_args(int argc, char **argv, t_cmds *commands);
+
+/* UTILS.C */
+
+void	execute_commands(char *cmd, char **env);
 
 #endif

@@ -1,4 +1,0 @@
-This will be output to the file named dup.txt
-This will be output again to the file named dup.txt
-This will also be output to the file named dup.txt
-we did not have an Error opening the file

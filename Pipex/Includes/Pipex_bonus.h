@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   freeing.c                                          :+:      :+:    :+:   */
+/*   Pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gustavo <gustavo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/17 17:51:43 by gamaral           #+#    #+#             */
-/*   Updated: 2024/08/16 23:26:34 by gustavo          ###   ########.fr       */
+/*   Created: 2023/12/03 20:05:43 by gamaral           #+#    #+#             */
+/*   Updated: 2024/08/17 01:00:45 by gustavo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/Pipex.h"
+#ifndef PIPEX_BONUS_H
+# define PIPEX_BONUS_H
 
-// void	free_cmd_struct(t_cmds *commands)
-// {
-//     free(commands->cmd1);
-//     free(commands->cmd2);
-//     free(commands);
-// }
+# include <unistd.h>
+# include <stdlib.h>
+# include <fcntl.h>
 
-void	free_array(char **array)
-{
-	size_t	i;
+/* HERE DOC STRING */
 
-	i = 0;
-	while (array[i])
-	{
-		free(array[i]);
-		array[i] = NULL;
-		i++;
-	}
-	free(array);
-}
+# define	HERE_DOC	"here_doc"
+
+/* UTILS_BONUS.C */
+
+int	open_file(char *file, int in_or_out);
+int	get_next_line_bonus(char **line);
+
+#endif

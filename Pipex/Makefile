@@ -3,18 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gamaral <gamaral@student.42.fr>            +#+  +:+       +#+         #
+#    By: gustavo <gustavo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/03 20:44:18 by gamaral           #+#    #+#              #
-#    Updated: 2023/12/17 19:32:52 by gamaral          ###   ########.fr        #
+#    Updated: 2024/08/17 01:04:36 by gustavo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Standard
 
 NAME := pipex
-#NAME_BONUS := 
-CC := cc 
+NAME_BONUS := pipex
+CC := cc
 CFLAGS := -Wall -Wextra -Werror -g
 RM = rm -rf
 INCLUDE = -I . -I ./Includes
@@ -29,14 +29,16 @@ endif
 #Sources
 
 MAIN = main.c
+BONUS = pipex_bonus.c
 SRC = ${wildcard Src/*.c}
-#SRC_BONUS = ${wildcard Bonus/*.c}
+SRC_BONUS = ${wildcard Bonus/*.c}
 
 #Objects
 
 MAIN_OBJ = ${MAIN:.c=.o}
+BONUS_OBJ = ${BONUS:.c=.o}
 OBJS = ${SRC:.c=.o}
-#OBJS_BONUS = ${SRC_BONUS:.c=.o}
+OBJS_BONUS = ${SRC_BONUS:.c=.o}
 
 all: ${NAME}
 
@@ -46,24 +48,23 @@ $(NAME): $(MAIN_OBJ) $(OBJS) $(Libft)
 	${RM} ${OBJS}
 	${MAKE} -C ${LIBFTPATH} fclean
 
-teste: $(MAIN_OBJ) $(Libft)
-	$(MAKE) -C $(LIBFTPATH) bonus
-	$(CC) $(CFLAGS) $(MAIN) -o $(NAME) $(LIBFT)
-	$(MAKE) -C ${LIBFTPATH} fclean
+# teste: $(MAIN_OBJ) $(Libft)
+# 	$(MAKE) -C $(LIBFTPATH) bonus
+# 	$(CC) $(CFLAGS) $(MAIN) -o $(NAME) $(LIBFT)
+# 	$(MAKE) -C ${LIBFTPATH} fclean
 
 Libft:
 	${MAKE} -C ${LIBFTPATH} bonus
 
 bonus: $(OBJS) $(OBJS_BONUS) $(Libft)
 	${MAKE} -C ${LIBFTPATH} bonus
-	$(CC) $(CFLAGS) $(OBJS) $(MAIN) -o $(NAME) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS) $(OBJS_BONUS) -o $(NAME_BONUS) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS) $(OBJS_BONUS) $(BONUS) -o $(NAME_BONUS) $(LIBFT)
 	${RM} $(MAIN_OBJ) ${OBJS} ${OBJS_BONUS}
 	${MAKE} -C ${LIBFTPATH} fclean
 
 clean:
 	${RM} $(MAIN_OBJ) ${OBJS} ${NAME}
-	${MAKE} -C ${LIBFTPATH} clean 
+	${MAKE} -C ${LIBFTPATH} clean
 
 fclean:
 	${RM} $(MAIN_OBJ) ${OBJS} ${NAME} ${NAME_BONUS}
